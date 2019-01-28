@@ -1,5 +1,5 @@
 #pragma once
-#include "Kinematic.h"
+#include "Rigidbody.h"
 
 
 
@@ -20,7 +20,7 @@ public:
 	float CircleRadius = 30.0f;
 	Color mColor;
 	// AI Motion
-	Kinematic mRigidbody;
+	Rigidbody mRigidbody;
 	
 	
 	void Draw();

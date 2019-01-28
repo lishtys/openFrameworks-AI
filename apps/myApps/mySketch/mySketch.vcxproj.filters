@@ -13,16 +13,25 @@
     <ClCompile Include="src\ofApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Kinematic.cpp">
-      <Filter>AI</Filter>
-    </ClCompile>
     <ClCompile Include="Boid.cpp">
       <Filter>AI</Filter>
     </ClCompile>
     <ClCompile Include="BasicMotion.cpp">
       <Filter>Assignment</Filter>
     </ClCompile>
-    <ClCompile Include="Tracking.cpp" />
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="KinematicMovment.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="SteeringOutput.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracking.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicMovement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -42,16 +51,25 @@
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Kinematic.h">
-      <Filter>AI</Filter>
-    </ClInclude>
     <ClInclude Include="Boid.h">
       <Filter>AI</Filter>
     </ClInclude>
     <ClInclude Include="BasicMotion.h">
       <Filter>Assignment</Filter>
     </ClInclude>
-    <ClInclude Include="Tracking.h" />
+    <ClInclude Include="Rigidbody.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracking.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="KinematicMovment.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="SteeringOutput.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicMovement.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

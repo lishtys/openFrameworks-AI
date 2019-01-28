@@ -182,16 +182,22 @@
   <ItemGroup>
     <ClCompile Include="BasicMotion.cpp" />
     <ClCompile Include="Boid.cpp" />
-    <ClCompile Include="Kinematic.cpp" />
+    <ClCompile Include="DynamicMovement.cpp" />
+    <ClCompile Include="Rigidbody.cpp" />
+    <ClCompile Include="KinematicMovment.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="SteeringOutput.cpp" />
     <ClCompile Include="Tracking.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicMotion.h" />
     <ClInclude Include="Boid.h" />
-    <ClInclude Include="Kinematic.h" />
+    <ClInclude Include="DynamicMovement.h" />
+    <ClInclude Include="Rigidbody.h" />
+    <ClInclude Include="KinematicMovment.h" />
     <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="SteeringOutput.h" />
     <ClInclude Include="Tracking.h" />
   </ItemGroup>
   <ItemGroup>

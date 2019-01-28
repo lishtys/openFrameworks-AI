@@ -6,7 +6,7 @@
 *.lo
 *.o
 *.obj
-*.vs
+.vs/
 
 # Precompiled Headers
 *.gch
@@ -31,3 +31,4 @@
 *.exe
 *.out
 *.app
+apps/myApps/mySketch/bin/*.*

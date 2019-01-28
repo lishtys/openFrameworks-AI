@@ -1,9 +1,17 @@
 ﻿  BasicMotion.cpp
-  mySketch.vcxproj -> C:\Users\u1157989\Desktop\of_v0.10.1_vs2017_release\apps\myApps\mySketch\bin\mySketch_debug.exe
+  Boid.cpp
+  Rigidbody.cpp
+  KinematicMovment.cpp
+  main.cpp
+  ofApp.cpp
+  SteeringOutput.cpp
+  Tracking.cpp
+     Creating library bin\mySketch_debug.lib and object bin\mySketch_debug.exp
+  mySketch.vcxproj -> C:\Users\u1157989\Documents\GitHub\openFrameworks-AI\apps\myApps\mySketch\bin\mySketch_debug.exe
   
-  	                   2	C:\Users\u1157989\Desktop\of_v0.10.1_vs2017_release\libs\fmodex\lib\vs\Win32\
-  	  *EXTRA File 		 6018560	C:\Users\u1157989\Desktop\of_v0.10.1_vs2017_release\apps\myApps\mySketch\bin\FreeImage.dll
+  	                   2	C:\Users\u1157989\Documents\GitHub\openFrameworks-AI\libs\fmodex\lib\vs\Win32\
+  	  *EXTRA File 		 6018560	C:\Users\u1157989\Documents\GitHub\openFrameworks-AI\apps\myApps\mySketch\bin\FreeImage.dll
   
-  	                   1	C:\Users\u1157989\Desktop\of_v0.10.1_vs2017_release\libs\FreeImage\lib\vs\Win32\
-  	  *EXTRA File 		 1266176	C:\Users\u1157989\Desktop\of_v0.10.1_vs2017_release\apps\myApps\mySketch\bin\fmodex.dll
-  	  *EXTRA File 		 1312768	C:\Users\u1157989\Desktop\of_v0.10.1_vs2017_release\apps\myApps\mySketch\bin\fmodexL.dll
+  	                   1	C:\Users\u1157989\Documents\GitHub\openFrameworks-AI\libs\FreeImage\lib\vs\Win32\
+  	  *EXTRA File 		 1266176	C:\Users\u1157989\Documents\GitHub\openFrameworks-AI\apps\myApps\mySketch\bin\fmodex.dll
+  	  *EXTRA File 		 1312768	C:\Users\u1157989\Documents\GitHub\openFrameworks-AI\apps\myApps\mySketch\bin\fmodexL.dll

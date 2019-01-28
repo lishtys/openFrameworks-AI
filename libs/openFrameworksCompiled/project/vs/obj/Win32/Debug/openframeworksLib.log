@@ -64,5 +64,5 @@
   ofVideoPlayer.cpp
   ofArduino.cpp
   ofSerial.cpp
-c:\users\u1157989\desktop\of_v0.10.1_vs2017_release\libs\openframeworks\communication\ofarduino.cpp(1526): warning C4333: '>>': right shift by too large amount, data loss
-  openframeworksLib.vcxproj -> C:\Users\u1157989\Desktop\of_v0.10.1_vs2017_release\libs\openFrameworksCompiled\project\vs\..\..\lib\vs\Win32\openframeworksLib_debug.lib
+c:\users\u1157989\documents\github\openframeworks-ai\libs\openframeworks\communication\ofarduino.cpp(1526): warning C4333: '>>': right shift by too large amount, data loss
+  openframeworksLib.vcxproj -> C:\Users\u1157989\Documents\GitHub\openFrameworks-AI\libs\openFrameworksCompiled\project\vs\..\..\lib\vs\Win32\openframeworksLib_debug.lib
