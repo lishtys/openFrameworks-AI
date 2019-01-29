@@ -16,11 +16,16 @@ void SeekMotion::Init()
 {
 	m_boid.mRigidbody.Position = ofVec2f(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
 
-	seek.character = &m_boid.mRigidbody;
-	seek.targetBoid = &targetRigid;
-	seek.maxAcceleration = 5;
-	seek.maxAngularAcc = 10;
-	seek.maxSpeed = 20;
+	arrive.character = &m_boid.mRigidbody;
+	arrive.targetBoid = &targetRigid;
+	arrive.maxAcceleration = 50;
+	arrive.maxAngularAcc = 10;
+	arrive.maxSpeed = 100;
+
+
+	arrive.TargetRadius = 5;
+	arrive.slowRadius = 200;
+	arrive.timeToTarget = 5;;
 }
 
 void SeekMotion::Update()
@@ -28,34 +33,11 @@ void SeekMotion::Update()
 	auto deltaTime = ofGetLastFrameTime();
 	SteeringOutput steer;
 
-	seek.getSteering(&steer);
+	arrive.getSteering(&steer);
 
 	m_boid.Update(steer,deltaTime);
 
-
-
-	if (m_boid.mRigidbody.Position.y == ofGetHeight() && m_boid.mRigidbody.Position.x == ofGetWidth())
-	{
-		m_boid.mRigidbody.Orientation = 3.14;
-		m_boid.mRigidbody.Velocity = ofVec2f(-100, 0);
-	}
-	else if (m_boid.mRigidbody.Position.y == ofGetHeight() && m_boid.mRigidbody.Position.x == 0)
-	{
-		m_boid.mRigidbody.Orientation = 4.6;
-		m_boid.mRigidbody.Velocity = ofVec2f(0, -100);
-	}
-	else if (m_boid.mRigidbody.Position.y == 0 && m_boid.mRigidbody.Position.x == ofGetWidth())
-	{
-		m_boid.mRigidbody.Orientation = 1.571;
-		m_boid.mRigidbody.Velocity = ofVec2f(0, 100);
-
-	}
-	else if (m_boid.mRigidbody.Position.y == 0 && m_boid.mRigidbody.Position.x == 0)
-	{
-		m_boid.mRigidbody.Orientation = 0;
-	}
-
-
+	m_boid.mRigidbody.FaceToMovement();
 
 
 
@@ -64,9 +46,13 @@ void SeekMotion::Update()
 void SeekMotion::Draw()
 {
 	m_boid.Draw();
-
 	ofSetColor(0, 255, 0);
 	ofDrawCircle(targetRigid.Position.x, targetRigid.Position.y, 10);
+
+
+	ofDrawBitmapString(m_boid.mRigidbody.Velocity, 100, 100);
+
+	
 }
 
 void SeekMotion::OnMousePressed()
@@ -75,5 +61,6 @@ void SeekMotion::OnMousePressed()
   {
 	  targetRigid.Position.x = ofGetMouseX();
 	  targetRigid.Position.y = ofGetMouseY();
+	  m_boid.mRigidbody.Stop();
   }
 }

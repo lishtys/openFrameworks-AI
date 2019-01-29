@@ -21,6 +21,7 @@ public:
 	Color mColor;
 	// AI Motion
 	Rigidbody mRigidbody;
+
 	
 	
 	void Draw();
@@ -28,6 +29,7 @@ public:
 	void Update(const SteeringOutput& steer, float deltaTime);
 
 	void Rotate(float rad);
+
 };
 
 

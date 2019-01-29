@@ -30,7 +30,7 @@ void Boid::Draw()
 	ofPopMatrix();//this restores the transformations saved before so the transformations made in between push and pop matrix dont affect what's drawn after this. 
 	
 	
-
+	ofDrawBitmapString(mRigidbody.Linear, 100, 200);
 	
 }
 
@@ -38,7 +38,6 @@ void Boid::Update(const SteeringOutput& steer, float deltaTime)
 {
 
 	mRigidbody.Update(steer,deltaTime);
-
 	if (mRigidbody.Position.x > ofGetWidth())
 	{
 		mRigidbody.Position.x = ofGetWidth();
@@ -57,6 +56,9 @@ void Boid::Update(const SteeringOutput& steer, float deltaTime)
 	{
 		mRigidbody.Position.y = 0;
 	}
+
+	ofSetColor(255, 255, 0);
+
 }
 
 void Boid::Rotate(float rad)

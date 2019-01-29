@@ -43,7 +43,7 @@ void DynamicSeek::getSteering(SteeringOutput* output)
 
 void DynamicFlee::getSteering(SteeringOutput* output) 
 {
-	output->linear -= targetBoid->Position;
+	output->linear =  character->Position- targetBoid->Position;
 
 	if (output->linear.length() > 0)
 	{
@@ -55,28 +55,31 @@ void DynamicFlee::getSteering(SteeringOutput* output)
 void DynamicArrive::getSteering(SteeringOutput* output) 
 {
 
-	output->linear -= targetBoid->Position;
+	auto dir = targetBoid->Position - character->Position;
 
+	float targetSpeed;
 	
-	if (output->linear.length()< TargetRadius)
+	if (dir.length()< TargetRadius)
 	{
-		output->linear = { 0,0 };
+		character->Stop();
 	}
-	else if((output->linear.length()>slowRadius))
+	else if((dir.length()>slowRadius))
 	{
-		output->linear *= maxSpeed;
-	}else
+		targetSpeed = maxSpeed;
+		output->linear = dir.getNormalized()*maxSpeed;
+		if (output->linear.length() > maxAcceleration)
+		{
+			output->linear = output->linear.getNormalized()*maxAcceleration;
+		}
+	}
+	else
 	{
-		auto factor = (output->linear.length() / slowRadius);
-		auto targetSpeed = maxSpeed * factor;
-		auto targetVel = output->linear.getNormalized()*targetSpeed;
-		auto acc = (targetVel - output->linear) / ofGetLastFrameTime();
+		auto factor = (dir.length() / slowRadius);
+		 targetSpeed = maxSpeed * factor;
+		auto targetVel =dir.getNormalized()*targetSpeed;
+		auto acc = (targetVel - character->Velocity )/ofGetLastFrameTime();
 		output->linear = acc;
-	}
-
-	if(output->linear.length()>maxAcceleration)
-	{
-		output->linear = output->linear.getNormalized()*maxAcceleration;
+		character->Linear = acc;
 	}
 
 

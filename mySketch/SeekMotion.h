@@ -21,7 +21,7 @@ public:
 
 	void OnMousePressed();
 
-	DynamicSeek seek;
+	DynamicArrive arrive;
 	
 private:
 

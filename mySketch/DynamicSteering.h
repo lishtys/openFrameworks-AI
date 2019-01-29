@@ -62,6 +62,5 @@ public:
 	float targetAngleThreshold;
 	float timeToTarget;
 
-
 	virtual void getSteering(SteeringOutput* output);
 };

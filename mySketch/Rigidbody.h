@@ -15,8 +15,15 @@ public:
 	float Orientation; // radians
 	float Rotation; // angular Vel
 
+	ofVec2f Linear;
 
 	void Update(const SteeringOutput& steer, float deltaTime);
+	void Stop();
 
+	void FaceToMovement();
+
+
+
+	
 };
 
