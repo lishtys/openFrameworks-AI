@@ -182,8 +182,10 @@
   <ItemGroup>
     <ClCompile Include="BasicMotion.cpp" />
     <ClCompile Include="Boid.cpp" />
+    <ClCompile Include="FlockSteering.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="DynamicSteering.cpp" />
+    <ClCompile Include="SeekMotion.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="SteeringOutput.cpp" />
@@ -192,8 +194,10 @@
   <ItemGroup>
     <ClInclude Include="BasicMotion.h" />
     <ClInclude Include="Boid.h" />
+    <ClInclude Include="FlockSteering.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="DynamicSteering.h" />
+    <ClInclude Include="SeekMotion.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="SteeringOutput.h" />
     <ClInclude Include="Tracking.h" />

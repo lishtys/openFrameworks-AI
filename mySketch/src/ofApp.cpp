@@ -1,22 +1,28 @@
 #include "ofApp.h"
 #include "../Boid.h"
 #include "../BasicMotion.h"
+#include "../SeekMotion.h"
 
-BasicMotion motion;
+BasicMotion BasicMotion;
+SeekMotion Seekmotion;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	motion.Init();
+	//BasicMotion.Init();
+	Seekmotion.Init();
+
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	motion.Update();
+//	BasicMotion.Update();
+	Seekmotion.Update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	motion.Draw();
+//	BasicMotion.Draw();
+	Seekmotion.Draw();
 }
 
 //--------------------------------------------------------------
@@ -41,7 +47,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+	Seekmotion.OnMousePressed();
 }
 
 //--------------------------------------------------------------

@@ -31,6 +31,12 @@
     <ClCompile Include="DynamicSteering.cpp">
       <Filter>AI</Filter>
     </ClCompile>
+    <ClCompile Include="SeekMotion.cpp">
+      <Filter>Assignment</Filter>
+    </ClCompile>
+    <ClCompile Include="FlockSteering.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -66,6 +72,12 @@
       <Filter>AI</Filter>
     </ClInclude>
     <ClInclude Include="DynamicSteering.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="SeekMotion.h">
+      <Filter>Assignment</Filter>
+    </ClInclude>
+    <ClInclude Include="FlockSteering.h">
       <Filter>AI</Filter>
     </ClInclude>
   </ItemGroup>

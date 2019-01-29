@@ -17,9 +17,21 @@ float randomBinomial(float max)
 	return  max * (float(rand()) / RAND_MAX)- max * (float(rand()) / RAND_MAX); 
 }
 
+
+float mapToRange(float rotRange)
+{
+
+	while(rotRange>3.14)
+	{
+		rotRange -= 3.14;
+	}
+
+	return rotRange;
+}
+
 void DynamicSeek::getSteering(SteeringOutput* output) 
 {
-	output->linear -= targetBoid->Position;
+	output->linear = targetBoid->Position-character->Position ;
 	
 	  if (output->linear.length() > 0)
         {
@@ -106,6 +118,33 @@ void DynamicWander::getSteering(SteeringOutput* output)
 		output->linear *= maxAcceleration;
 	}
 }
+
+void DynamicAlign::getSteering(SteeringOutput* output)
+{
+	auto rotOffset = targetBoid->Rotation - character->Rotation;
+
+	rotOffset = mapToRange(rotOffset);
+
+	auto absRot = abs(rotOffset);
+
+	if(rotOffset<targetAngleThreshold)  return;
+
+	if(rotOffset>slowAngleThreshold)
+	{
+		output->angular = maxAngularAcc;
+	}
+	else
+	{
+		
+		auto factor = absRot / slowAngleThreshold;
+		auto targetRot = maxRotation * factor;
+		targetRot *= (rotOffset / absRot);
+		auto rotAcc = targetRot - character->Rotation/(ofGetLastFrameTime());
+		output->angular = rotAcc;
+	}
+
+}
+
 
 
 

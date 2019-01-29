@@ -1,5 +1,5 @@
 #include "BasicMotion.h"
-#include "ofMesh.h"
+#include "of3dPrimitives.h"
 
 
 BasicMotion::BasicMotion()
@@ -20,7 +20,8 @@ void BasicMotion::Init()
 
 void BasicMotion::Update()
 {
-	m_boid.Update();
+	//SteeringOutput steer;
+	//m_boid.Update(&steer,ofGetLastFrameTime());
 
 	if(m_boid.mRigidbody.Position.y == ofGetHeight() && m_boid.mRigidbody.Position.x == ofGetWidth())
 	{

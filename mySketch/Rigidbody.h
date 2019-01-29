@@ -1,6 +1,8 @@
 #pragma once
 #include "ofVec2f.h"
 
+class SteeringOutput;
+
 class Rigidbody
 {
 public:
@@ -14,7 +16,7 @@ public:
 	float Rotation; // angular Vel
 
 
-	void Update();
+	void Update(const SteeringOutput& steer, float deltaTime);
 
 };
 

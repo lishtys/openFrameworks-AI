@@ -13,6 +13,7 @@ public:
 	Rigidbody* targetBoid;
 	float maxSpeed;
 	float maxAcceleration;
+	float maxAngularAcc;
 	virtual void getSteering(SteeringOutput* output)  = 0;
 };
 
@@ -49,6 +50,18 @@ public:
 	float turnSpeed;
 	ofVec2f wanderTarget;
 	float viewRange;
+
+	virtual void getSteering(SteeringOutput* output);
+};
+
+class DynamicAlign : public DynamicSteering
+{
+public:
+	float maxRotation;
+	float slowAngleThreshold;
+	float targetAngleThreshold;
+	float timeToTarget;
+
 
 	virtual void getSteering(SteeringOutput* output);
 };

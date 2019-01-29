@@ -25,7 +25,7 @@ public:
 	
 	void Draw();
 
-	void Update();
+	void Update(const SteeringOutput& steer, float deltaTime);
 
 	void Rotate(float rad);
 };

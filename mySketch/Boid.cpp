@@ -34,10 +34,10 @@ void Boid::Draw()
 	
 }
 
-void Boid::Update()
+void Boid::Update(const SteeringOutput& steer, float deltaTime)
 {
 
-	mRigidbody.Update();
+	mRigidbody.Update(steer,deltaTime);
 
 	if (mRigidbody.Position.x > ofGetWidth())
 	{
