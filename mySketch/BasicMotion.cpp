@@ -75,8 +75,11 @@ void BasicMotion::Draw()
 	m_boid.Draw();
 }
 
-void BasicMotion::OnMousePressed()
+void BasicMotion::OnMousePressed(int x,int y)
 {
+
+	
+
 }
 
 

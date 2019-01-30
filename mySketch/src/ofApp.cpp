@@ -3,13 +3,13 @@
 #include "../BasicMotion.h"
 #include "../SeekMotion.h"
 #include "../WanderMotion.h"
-
-
+#include "../FlockMotion.h"
 
 
  // BasicMotion motion;
-  // SeekMotion motion;
-  WanderMotion motion;
+   // SeekMotion motion;
+   // WanderMotion motion;
+ FlockMotion motion;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -54,7 +54,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-	motion.OnMousePressed();
+	motion.OnMousePressed(x,y);
 	// Wondermotion.OnMousePressed();
 }
 

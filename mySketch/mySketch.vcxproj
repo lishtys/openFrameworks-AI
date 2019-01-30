@@ -183,6 +183,8 @@
     <ClCompile Include="BaseMotion.cpp" />
     <ClCompile Include="BasicMotion.cpp" />
     <ClCompile Include="Boid.cpp" />
+    <ClCompile Include="Flock.cpp" />
+    <ClCompile Include="FlockMotion.cpp" />
     <ClCompile Include="FlockSteering.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="DynamicSteering.cpp" />
@@ -197,6 +199,8 @@
     <ClInclude Include="BaseMotion.h" />
     <ClInclude Include="BasicMotion.h" />
     <ClInclude Include="Boid.h" />
+    <ClInclude Include="Flock.h" />
+    <ClInclude Include="FlockMotion.h" />
     <ClInclude Include="FlockSteering.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="DynamicSteering.h" />

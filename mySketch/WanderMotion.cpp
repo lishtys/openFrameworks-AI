@@ -69,7 +69,7 @@ void WanderMotion::Draw()
 
 }
 
-void WanderMotion::OnMousePressed()
+void WanderMotion::OnMousePressed(int x,int y)
 {
 	if (ofGetMousePressed())
 	{

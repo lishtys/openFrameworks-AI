@@ -10,21 +10,38 @@ FlockSteering::FlockSteering()
 
 FlockSteering::~FlockSteering()
 {
+	
 }
+
+
 
 void Separation::getSteering(SteeringOutput* output)
 {
-	for (auto element : boidTargets)
+	auto boid_list = mFlock->boid_list;
+	auto leader = mFlock->leader;
+	auto maxAccerlation = mFlock->maxAccerlation;
+
+	for (auto element : boid_list)
 	{
-		auto direction = element->mRigidbody.Position-character->Position;
+		if(&element==mCharacter) continue;;
+		
+		ofVec2f targetPos;
+
+		if(leader!=NULL)
+		{
+			targetPos= leader->mRigidbody.Position;
+		}else
+		{
+			targetPos = mFlock->GetNeighbourhoodCenter();
+		}
+
+		auto direction = element.mRigidbody.Position - targetPos;
 		auto distance = direction.length();
+		
 		if(distance<threshold)
 		{
-			auto strength = K / (distance*distance);
-			if(strength>maxAccerlation)
-			{
-				strength = maxAccerlation;
-			}
+			auto strength = maxAccerlation * (threshold - distance) / threshold;
+	
 			output->linear += strength * direction.normalize();
 		}
 

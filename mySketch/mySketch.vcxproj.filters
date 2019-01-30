@@ -43,6 +43,10 @@
     <ClCompile Include="BaseMotion.cpp">
       <Filter>Assignment</Filter>
     </ClCompile>
+    <ClCompile Include="Flock.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="FlockMotion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -92,6 +96,10 @@
     <ClInclude Include="BaseMotion.h">
       <Filter>Assignment</Filter>
     </ClInclude>
+    <ClInclude Include="Flock.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="FlockMotion.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

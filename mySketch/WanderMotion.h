@@ -13,7 +13,7 @@ public:
 	void Update();
 	void Draw();
 
-	void OnMousePressed();
+	void OnMousePressed(int x,int y);
 
 	DynamicWander wander;
 	DynamicAlign align;

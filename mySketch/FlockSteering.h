@@ -1,7 +1,7 @@
 #pragma once
-#include <vector>
-#include "Boid.h"
+
 #include "DynamicSteering.h"
+#include "Flock.h"
 
 class FlockSteering 
 {
@@ -9,19 +9,17 @@ public:
 	FlockSteering();
 	~FlockSteering();
 
-	std::vector<Boid*> boidTargets;
-	Rigidbody *character;
-	float maxAccerlation;
+	Flock* mFlock;
+	Boid * mCharacter;
+	
 };
 
 class Separation : public FlockSteering
 {
 
+public:
 	float threshold;
 	float K;
-
-
-public:
 	virtual void getSteering(SteeringOutput* output);
 };
 
@@ -31,4 +29,6 @@ class Align:public FlockSteering
 public:
 	virtual void getSteering(SteeringOutput* output);
 };
+
+
 

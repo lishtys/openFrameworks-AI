@@ -39,23 +39,23 @@ void Boid::Update(const SteeringOutput& steer, float deltaTime)
 
 	mRigidbody.Update(steer,deltaTime);
 	
-	if (mRigidbody.Position.x > ofGetWidth())
+	if (mRigidbody.Position.x > ofGetWidth()+CircleRadius)
 	{
-		mRigidbody.Position.x = ofGetWidth();
+		mRigidbody.Position.x = -CircleRadius;
 	}
-	if (mRigidbody.Position.x < 0)
+	if (mRigidbody.Position.x < -CircleRadius)
 	{
-		mRigidbody.Position.x = 0;
+		mRigidbody.Position.x = ofGetWidth() + CircleRadius;
 	}
 
-	if (mRigidbody.Position.y > ofGetHeight())
+	if (mRigidbody.Position.y > ofGetHeight()+ CircleRadius)
 	{
-		mRigidbody.Position.y = ofGetHeight();
+		mRigidbody.Position.y =-CircleRadius;
 	}
 	
-	if (mRigidbody.Position.y < 0)
+	if (mRigidbody.Position.y < -CircleRadius)
 	{
-		mRigidbody.Position.y = 0;
+		mRigidbody.Position.y = ofGetHeight() + CircleRadius;
 	}
 
 

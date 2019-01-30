@@ -32,13 +32,13 @@ void SeekMotion::Init()
 	align.targetBoid = &targetRigid;
 
 	align.maxAcceleration = 50;
-	align.maxAngularAcc = 0.3;
+	align.maxAngularAcc = 1;
 	align.maxSpeed = 100;
 
-	align.maxRotation = 1;
-	align.slowAngleThreshold = 1;
+	align.maxRotation = 2;
+	align.slowAngleThreshold = 0.3;
 	align.targetAngleThreshold = 0.1;
-	align.timeToTarget = 2;
+	align.timeToTarget = .2;
 
 }
 
