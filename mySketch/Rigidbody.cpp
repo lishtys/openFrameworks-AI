@@ -17,13 +17,12 @@ void Rigidbody::Update(const SteeringOutput& steer,float deltaTime)
 
 	Velocity.x += steer.linear.x*deltaTime;
 	Velocity.y += steer.linear.y*deltaTime;
-	Rotation += steer.angular*Rotation;
-
 	
-
+	Rotation += deltaTime * steer.angular;
 
 	 Position += ofGetLastFrameTime()*Velocity;
-	
+	 Orientation += ofGetLastFrameTime()*Rotation;
+	 Orientation = fmodf(Orientation, 2 * 3.141592);
 }
 
 void Rigidbody::Stop()
@@ -33,10 +32,19 @@ void Rigidbody::Stop()
 	
 }
 
-void Rigidbody::FaceToMovement()
+void Rigidbody::LookToMovment()
 {
 
 	if (Velocity.length() > 0) {
 		Orientation = atan2(Velocity.y, Velocity.x);
 	}
 }
+
+void Rigidbody::MoveForword()
+{
+	auto dir = GetOrientationVector();
+	Velocity=	Velocity.length()*dir.getNormalized();
+}
+
+
+

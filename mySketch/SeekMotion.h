@@ -11,18 +11,16 @@ public:
 
 	void Init();
 
-
 	void Update();
 
 
 	void Draw();
 
-
-
 	void OnMousePressed();
 
 	DynamicArrive arrive;
-	
+	DynamicAlign align;
+
 private:
 
 	Boid m_boid;

@@ -21,10 +21,17 @@ float randomBinomial(float max)
 float mapToRange(float rotRange)
 {
 
-	while(rotRange>3.14)
+	while(rotRange>3.1415926)
 	{
-		rotRange -= 3.14;
+		rotRange -=2*3.1415926;
 	}
+
+	while (rotRange<2*-3.1415926)
+	{
+		rotRange +=2* 3.1415926;
+	}
+
+
 
 	return rotRange;
 }
@@ -79,7 +86,7 @@ void DynamicArrive::getSteering(SteeringOutput* output)
 		auto targetVel =dir.getNormalized()*targetSpeed;
 		auto acc = (targetVel - character->Velocity )/ofGetLastFrameTime();
 		output->linear = acc;
-		character->Linear = acc;
+		// character->Linear = acc;
 	}
 
 
@@ -87,54 +94,64 @@ void DynamicArrive::getSteering(SteeringOutput* output)
 
 void DynamicWander::getSteering(SteeringOutput* output)
 {
-	if (targetBoid->Position.length() == 0) {
-		wanderTarget = character->Position;
-		wanderTarget.x += viewRange;
-	}
 
-
-	auto distance = targetBoid->Position - character->Position;
 	float angle;
-	if (distance.x*distance.x + distance.y*distance.y > 0) {
-		angle = atan2f(distance.y, distance.x);
-	}
-	else
+	if(targetBoid!=NULL)
 	{
-		angle = 0;
+		auto distance = targetBoid->Position - character->Position;
+		
+		if (distance.x*distance.x + distance.y*distance.y > 0) {
+			angle = atan2f(distance.y, distance.x);
+		}
+		else
+		{
+			angle = 0;
+		}
+
+		wanderTarget = character->Position;
+		wanderTarget.x += viewRange * cosf(angle);
+		wanderTarget.y += viewRange * sinf(angle);
+
+		wanderTarget.x += randomBinomial(maxOrintation);
+		wanderTarget.y += randomBinomial(maxOrintation);
+
+
+		// Seek
+		output->linear = wanderTarget;
+		output->linear -= character->Position;
+
+		if (output->linear.length() > 0)
+		{
+			output->linear = output->linear.getNormalized();
+			output->linear *= maxAcceleration;
+
+			if (output->linear.length() > maxSpeed)
+			{
+				output->linear.getNormalized() *= maxSpeed;
+			}
+		}
 	}
 
-	wanderTarget = character->Position;
-	wanderTarget.x += viewRange * cosf(angle);
-	wanderTarget.y+= viewRange * sinf(angle);
 
-	wanderTarget.x += randomBinomial(turnSpeed);
-	wanderTarget.y += randomBinomial(turnSpeed);
-
-
-	// Seek
-	output->linear = wanderTarget;
-	output->linear -= character->Position;
-
-	if (output->linear.length() > 0)
-	{
-		output->linear=output->linear.getNormalized();
-		output->linear *= maxAcceleration;
-	}
 }
 
 void DynamicAlign::getSteering(SteeringOutput* output)
 {
-	auto rotOffset = targetBoid->Rotation - character->Rotation;
+	auto rotOffset = targetBoid->Orientation - character->Orientation;
 
 	rotOffset = mapToRange(rotOffset);
 
 	auto absRot = abs(rotOffset);
 
-	if(rotOffset<targetAngleThreshold)  return;
-
-	if(rotOffset>slowAngleThreshold)
+	if (absRot < targetAngleThreshold)
 	{
-		output->angular = maxAngularAcc;
+		character->Rotation = 0;
+		return;
+	}
+
+	if(absRot >slowAngleThreshold)
+	{
+		character->Rotation = maxRotation;
 	}
 	else
 	{
@@ -142,8 +159,13 @@ void DynamicAlign::getSteering(SteeringOutput* output)
 		auto factor = absRot / slowAngleThreshold;
 		auto targetRot = maxRotation * factor;
 		targetRot *= (rotOffset / absRot);
-		auto rotAcc = targetRot - character->Rotation/(ofGetLastFrameTime());
+		auto rotAcc = (targetRot - character->Orientation)/timeToTarget;
 		output->angular = rotAcc;
+
+		if(output->angular>maxAngularAcc)
+		{
+			output->angular = maxAngularAcc;
+		}
 	}
 
 }

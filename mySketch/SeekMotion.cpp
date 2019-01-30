@@ -16,6 +16,7 @@ void SeekMotion::Init()
 {
 	m_boid.mRigidbody.Position = ofVec2f(ofGetWindowWidth()/2, ofGetWindowHeight()/2);
 
+	targetRigid.Orientation =5;
 	arrive.character = &m_boid.mRigidbody;
 	arrive.targetBoid = &targetRigid;
 	arrive.maxAcceleration = 50;
@@ -26,6 +27,19 @@ void SeekMotion::Init()
 	arrive.TargetRadius = 5;
 	arrive.slowRadius = 200;
 	arrive.timeToTarget = 5;;
+
+	align.character = &m_boid.mRigidbody;
+	align.targetBoid = &targetRigid;
+
+	align.maxAcceleration = 50;
+	align.maxAngularAcc = 0.3;
+	align.maxSpeed = 100;
+
+	align.maxRotation = 1;
+	align.slowAngleThreshold = 1;
+	align.targetAngleThreshold = 0.1;
+	align.timeToTarget = 2;
+
 }
 
 void SeekMotion::Update()
@@ -35,9 +49,11 @@ void SeekMotion::Update()
 
 	arrive.getSteering(&steer);
 
-	m_boid.Update(steer,deltaTime);
+	
+	align.getSteering(&steer);
 
-	m_boid.mRigidbody.FaceToMovement();
+	m_boid.Update(steer, deltaTime);
+
 
 
 

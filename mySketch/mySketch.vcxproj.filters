@@ -37,6 +37,12 @@
     <ClCompile Include="FlockSteering.cpp">
       <Filter>AI</Filter>
     </ClCompile>
+    <ClCompile Include="WanderMotion.cpp">
+      <Filter>Assignment</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseMotion.cpp">
+      <Filter>Assignment</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -79,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="FlockSteering.h">
       <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="WanderMotion.h">
+      <Filter>Assignment</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseMotion.h">
+      <Filter>Assignment</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

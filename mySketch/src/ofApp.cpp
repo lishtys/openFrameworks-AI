@@ -2,27 +2,34 @@
 #include "../Boid.h"
 #include "../BasicMotion.h"
 #include "../SeekMotion.h"
+#include "../WanderMotion.h"
 
-BasicMotion BasicMotion;
-SeekMotion Seekmotion;
+
+
+
+ // BasicMotion motion;
+  // SeekMotion motion;
+  WanderMotion motion;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	//BasicMotion.Init();
-	Seekmotion.Init();
-
+	motion.Init();
+	// Seekmotion.Init();
+	// Wondermotion.Init();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-//	BasicMotion.Update();
-	Seekmotion.Update();
+	motion.Update();
+	// Seekmotion.Update();
+	// Wondermotion.Update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-//	BasicMotion.Draw();
-	Seekmotion.Draw();
+	motion.Draw();
+	// Seekmotion.Draw();
+	// Wondermotion.Draw();
 }
 
 //--------------------------------------------------------------
@@ -47,7 +54,8 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-	Seekmotion.OnMousePressed();
+	motion.OnMousePressed();
+	// Wondermotion.OnMousePressed();
 }
 
 //--------------------------------------------------------------

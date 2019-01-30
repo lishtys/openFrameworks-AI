@@ -4,6 +4,7 @@
 
 SteeringOutput::SteeringOutput()
 {
+	angular = 0.0;
 }
 
 

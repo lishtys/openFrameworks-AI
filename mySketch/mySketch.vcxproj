@@ -180,6 +180,7 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseMotion.cpp" />
     <ClCompile Include="BasicMotion.cpp" />
     <ClCompile Include="Boid.cpp" />
     <ClCompile Include="FlockSteering.cpp" />
@@ -190,8 +191,10 @@
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="SteeringOutput.cpp" />
     <ClCompile Include="Tracking.cpp" />
+    <ClCompile Include="WanderMotion.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseMotion.h" />
     <ClInclude Include="BasicMotion.h" />
     <ClInclude Include="Boid.h" />
     <ClInclude Include="FlockSteering.h" />
@@ -201,6 +204,7 @@
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="SteeringOutput.h" />
     <ClInclude Include="Tracking.h" />
+    <ClInclude Include="WanderMotion.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

@@ -16,36 +16,43 @@ void BasicMotion::Init()
 {
 	m_boid.mRigidbody.Velocity = ofVec2f(100, 0);
 
+
+	
+
 }
 
 void BasicMotion::Update()
 {
-	//SteeringOutput steer;
-	//m_boid.Update(&steer,ofGetLastFrameTime());
+	SteeringOutput steer;
 
+	
 	if(m_boid.mRigidbody.Position.y == ofGetHeight() && m_boid.mRigidbody.Position.x == ofGetWidth())
 	{
-		m_boid.mRigidbody.Orientation = 3.14;
+		// m_boid.mRigidbody.Orientation = 3.14;
 		m_boid.mRigidbody.Velocity = ofVec2f(-100, 0);
 	}
 	else if (m_boid.mRigidbody.Position.y == ofGetHeight() && m_boid.mRigidbody.Position.x == 0)
 	{
-		m_boid.mRigidbody.Orientation = 4.6;
+		// m_boid.mRigidbody.Orientation = 4.6;
 		m_boid.mRigidbody.Velocity = ofVec2f(0, -100);
 	}
 	else if (m_boid.mRigidbody.Position.y == 0 && m_boid.mRigidbody.Position.x == ofGetWidth())
 	{
-		m_boid.mRigidbody.Orientation = 1.571;
+		// m_boid.mRigidbody.Orientation = 1.571;
 		m_boid.mRigidbody.Velocity = ofVec2f(0, 100);
 
 	}
 	else if (m_boid.mRigidbody.Position.y == 0 && m_boid.mRigidbody.Position.x == 0)
 	{
-		m_boid.mRigidbody.Orientation = 0;
+		// m_boid.mRigidbody.Orientation = 0;
 
 	}
 
-	
+	m_boid.Update(steer, ofGetLastFrameTime());
+
+	m_boid.mRigidbody.LookToMovment();
+
+
 
 	// Add Tracking
 
@@ -68,11 +75,10 @@ void BasicMotion::Draw()
 	m_boid.Draw();
 }
 
-
-void BasicMotion::Rotate(float rad)
+void BasicMotion::OnMousePressed()
 {
-	m_boid.Rotate(rad);
 }
+
 
 
 

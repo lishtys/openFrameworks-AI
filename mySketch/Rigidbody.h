@@ -15,15 +15,22 @@ public:
 	float Orientation; // radians
 	float Rotation; // angular Vel
 
-	ofVec2f Linear;
 
 	void Update(const SteeringOutput& steer, float deltaTime);
 	void Stop();
 
-	void FaceToMovement();
+	void LookToMovment();
 
+	ofVec2f GetOrientationVector()
+	{
+		return ofVec2f(sinf(Orientation),
+			cosf(Orientation));
+	}
+	float GetMovementOrientation()
+	{
+		return atan2(Velocity.y, Velocity.x);
+	}
 
-
-	
+	void MoveForword();
 };
 

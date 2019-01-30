@@ -47,7 +47,7 @@ public:
 class DynamicWander : public DynamicSteering
 {
 public:
-	float turnSpeed;
+	float maxOrintation;
 	ofVec2f wanderTarget;
 	float viewRange;
 

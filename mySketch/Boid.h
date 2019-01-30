@@ -5,9 +5,9 @@
 
  struct  Color
 {
-	float r = 255;
-	float g = 255;
-	float b = 255;
+	float r = 0;
+	float g = 0;
+	float b = 0;
 };
 
 class Boid
@@ -17,7 +17,7 @@ public:
 	~Boid();
 
 	// Parameter
-	float CircleRadius = 30.0f;
+	float CircleRadius = 10;
 	Color mColor;
 	// AI Motion
 	Rigidbody mRigidbody;
