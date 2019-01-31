@@ -2,6 +2,7 @@
 #include "Flock.h"
 #include "SteeringOutput.h"
 #include "FlockSteering.h"
+#include "KinematicSteering.h"
 
 class FlockMotion
 {
@@ -17,9 +18,25 @@ public:
 	Flock flock;
 
 
-	Separation separation;
+	DynamicSeparation d_separation;
+	KinematicSeparation k_separation;
 
+
+	DynamicSeek d_seek;
+	DynamicAlign d_align;
+	DynamicWander d_wander;
+	DynamicMatchVel d_velMatch;
+	
+	std::vector<Avoid> avoid_list;
+	std::vector<Obstacle> obstacles_list;
 
 	Boid leader;
+	Rigidbody	 targetRigid;
+
+
+
+
+
+
 };
 

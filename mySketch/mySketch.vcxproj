@@ -186,6 +186,8 @@
     <ClCompile Include="Flock.cpp" />
     <ClCompile Include="FlockMotion.cpp" />
     <ClCompile Include="FlockSteering.cpp" />
+    <ClCompile Include="KinematicSteering.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="DynamicSteering.cpp" />
     <ClCompile Include="SeekMotion.cpp" />
@@ -202,6 +204,8 @@
     <ClInclude Include="Flock.h" />
     <ClInclude Include="FlockMotion.h" />
     <ClInclude Include="FlockSteering.h" />
+    <ClInclude Include="KinematicSteering.h" />
+    <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="DynamicSteering.h" />
     <ClInclude Include="SeekMotion.h" />

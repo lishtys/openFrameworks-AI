@@ -9,7 +9,13 @@ public:
 
 	SteeringOutput(const ofVec2f& linear, float angular = 0);
 
+	//Dynamic
 	ofVec2f linear;
 	float angular;
+
+	// Kinematic
+	ofVec2f Velocity;
+	float Rotation;
+
 };
 

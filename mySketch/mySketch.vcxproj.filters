@@ -47,6 +47,10 @@
       <Filter>AI</Filter>
     </ClCompile>
     <ClCompile Include="FlockMotion.cpp" />
+    <ClCompile Include="KinematicSteering.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -100,6 +104,10 @@
       <Filter>AI</Filter>
     </ClInclude>
     <ClInclude Include="FlockMotion.h" />
+    <ClInclude Include="KinematicSteering.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

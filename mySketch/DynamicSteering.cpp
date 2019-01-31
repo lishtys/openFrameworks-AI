@@ -4,6 +4,8 @@
 
 DynamicSteering::DynamicSteering()
 {
+	character = nullptr;
+	targetBoid = nullptr;
 }
 
 
@@ -38,9 +40,16 @@ float mapToRange(float rotRange)
 
 void DynamicSeek::getSteering(SteeringOutput* output) 
 {
-	output->linear = targetBoid->Position-character->Position ;
-	
-	  if (output->linear.length() > 0)
+	if(targetBoid!=NULL)
+	{
+		output->linear = targetBoid->Position - character->Position;
+	}
+	else
+	{
+		output->linear =( targetPosition - character->Position)/50;
+	}
+
+	  if (output->linear.length()> maxAcceleration)
         {
 		  output->linear=output->linear.getNormalized();
 		  output->linear *= maxAcceleration;
@@ -50,9 +59,17 @@ void DynamicSeek::getSteering(SteeringOutput* output)
 
 void DynamicFlee::getSteering(SteeringOutput* output) 
 {
-	output->linear =  character->Position- targetBoid->Position;
+	if(targetBoid!=nullptr)
+	{
+		output->linear = character->Position- targetBoid->Position ;
+	}
+	else
+	{
+		output->linear = character->Position- targetPosition ;
+	}
 
-	if (output->linear.length() > 0)
+
+	if (output->linear.length() > maxAcceleration)
 	{
 		output->linear = output->linear.getNormalized();
 		output->linear *= maxAcceleration;
@@ -86,52 +103,37 @@ void DynamicArrive::getSteering(SteeringOutput* output)
 		auto targetVel =dir.getNormalized()*targetSpeed;
 		auto acc = (targetVel - character->Velocity )/ofGetLastFrameTime();
 		output->linear = acc;
-		// character->Linear = acc;
+	
 	}
 
 
 }
 
+float GetRandom(int max)
+{
+	return  ofRandom(max) - ofRandom(max);
+}
+
+
 void DynamicWander::getSteering(SteeringOutput* output)
 {
 
-	float angle;
-	if(targetBoid!=NULL)
+	auto wanderDelta = GetRandom(3); // Determine noise ratio
+	auto dir = character->Velocity.getNormalized(); // Get center of wander circle
+	dir *= (60); // Multiply by distance
+	auto center = dir + (character->Position);
+	// Apply offset to get new target    
+	auto offset = ofVec2f(wanderRadius*cos(wanderDelta), wanderRadius*sin(wanderDelta));
+	wanderTarget = center + offset;
+
+	// Steer toward new target    
+	auto seekDir = wanderTarget - character->Position;
+
+	if (seekDir.length() > 0)
 	{
-		auto distance = targetBoid->Position - character->Position;
-		
-		if (distance.x*distance.x + distance.y*distance.y > 0) {
-			angle = atan2f(distance.y, distance.x);
-		}
-		else
-		{
-			angle = 0;
-		}
-
-		wanderTarget = character->Position;
-		wanderTarget.x += viewRange * cosf(angle);
-		wanderTarget.y += viewRange * sinf(angle);
-
-		wanderTarget.x += randomBinomial(maxOrintation);
-		wanderTarget.y += randomBinomial(maxOrintation);
-
-
-		// Seek
-		output->linear = wanderTarget;
-		output->linear -= character->Position;
-
-		if (output->linear.length() > 0)
-		{
-			output->linear = output->linear.getNormalized();
-			output->linear *= maxAcceleration;
-
-			if (output->linear.length() > maxSpeed)
-			{
-				output->linear.getNormalized() *= maxSpeed;
-			}
-		}
+		output->linear = seekDir.getNormalized();
+		output->linear *= maxAcceleration;
 	}
-
 
 }
 
@@ -169,6 +171,8 @@ void DynamicAlign::getSteering(SteeringOutput* output)
 	}
 
 }
+
+
 
 
 

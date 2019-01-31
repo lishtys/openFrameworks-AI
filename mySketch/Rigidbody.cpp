@@ -14,14 +14,32 @@ Rigidbody::~Rigidbody()
 
 void Rigidbody::Update(const SteeringOutput& steer,float deltaTime)
 {
+	//Dynamic
+	auto linear = steer.linear;
 
-	Velocity.x += steer.linear.x*deltaTime;
-	Velocity.y += steer.linear.y*deltaTime;
-	
+
+	Velocity.x += linear.x*deltaTime;
+	Velocity.y +=linear.y*deltaTime;
+
 	Rotation += deltaTime * steer.angular;
 
-	 Position += ofGetLastFrameTime()*Velocity;
-	 Orientation += ofGetLastFrameTime()*Rotation;
+	//Kinematic
+	Velocity += steer.Velocity*deltaTime;
+	Rotation += steer.Rotation*deltaTime;
+
+
+
+
+
+
+	if(Velocity.length()>maxSpeed)
+	{
+		Velocity= Velocity.getNormalized()*maxSpeed;
+	}
+
+
+	 Position += deltaTime*Velocity;
+	 Orientation += deltaTime *Rotation;
 	 Orientation = fmodf(Orientation, 2 * 3.141592);
 }
 

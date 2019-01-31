@@ -4,6 +4,7 @@
 
 Flock::Flock()
 {
+	leader = nullptr;
 }
 
 

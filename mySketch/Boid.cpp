@@ -6,6 +6,8 @@ Boid::Boid()
 {
 	mRigidbody.Position.x = 0;
 	mRigidbody.Position.y = 0;
+	UpdateWeight();
+	
 }
 
 
@@ -30,7 +32,6 @@ void Boid::Draw()
 	ofPopMatrix();//this restores the transformations saved before so the transformations made in between push and pop matrix dont affect what's drawn after this. 
 	
 	
-	// ofDrawBitmapString(mRigidbody.Linear, 100, 200);
 	
 }
 
@@ -58,10 +59,17 @@ void Boid::Update(const SteeringOutput& steer, float deltaTime)
 		mRigidbody.Position.y = ofGetHeight() + CircleRadius;
 	}
 
+	UpdateWeight();
 
 }
 
-void Boid::Rotate(float rad)
+void Boid::UpdateWeight()
 {
-	mRigidbody.Rotation = rad;
+	mRigidbody.wAvo = KAvoid;
+	mRigidbody.wSeek = KSeek;
+	mRigidbody.wWan = KWander;
+	mRigidbody.wSep = KSeparate;
+	mRigidbody.wVel = kVelMatch;
 }
+
+

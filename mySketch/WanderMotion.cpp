@@ -15,15 +15,15 @@ WanderMotion::~WanderMotion()
 void WanderMotion::Init()
 {
 	m_boid.mRigidbody.Position = ofVec2f(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
-
+	
+	// Dynamic
 	wander.character = &m_boid.mRigidbody;
 	wander.targetBoid = &targetRigid;
 	wander.maxAcceleration = 50;
 	wander.maxAngularAcc = 10;
 	wander.maxSpeed = 100;
 
-	wander.maxOrintation = 2;
-	wander.viewRange = 20;	
+
 	
 	
 	align.character = &m_boid.mRigidbody;
@@ -36,9 +36,12 @@ void WanderMotion::Init()
 	align.targetAngleThreshold = 0.1;
 	align.timeToTarget = .2;
 
-	
 
 
+	//Kinematic
+
+	kinematic_wander.character= &m_boid.mRigidbody;
+	kinematic_wander.maxSpeed = 10;
 	
 
 
@@ -48,14 +51,17 @@ void WanderMotion::Update()
 {
 	auto deltaTime = ofGetLastFrameTime();
 	SteeringOutput steer;
-	wander.getSteering(&steer);
 
-	targetRigid.Orientation = m_boid.mRigidbody.GetMovementOrientation();
-	align.getSteering(&steer);
+	// kinematic_wander.getSteering(&steer);
+
+	 wander.getSteering(&steer);
+ 
+	 targetRigid.Orientation = m_boid.mRigidbody.GetMovementOrientation();
+	 align.getSteering(&steer);
 	
 	m_boid.Update(steer, deltaTime);
 
-	
+	// m_boid.mRigidbody.LookToMovment();
 
 
 }

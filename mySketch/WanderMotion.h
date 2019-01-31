@@ -2,6 +2,7 @@
 #include "Rigidbody.h"
 #include "Boid.h"
 #include "DynamicSteering.h"
+#include "KinematicSteering.h"
 
 class WanderMotion
 {
@@ -15,10 +16,14 @@ public:
 
 	void OnMousePressed(int x,int y);
 
+	//Dynamic 
 	DynamicWander wander;
 	DynamicAlign align;
 
 
+	//Kinematic
+
+	KinematicWander kinematic_wander;
 	
 
 

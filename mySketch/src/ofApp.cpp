@@ -8,8 +8,8 @@
 
  // BasicMotion motion;
    // SeekMotion motion;
-   // WanderMotion motion;
- FlockMotion motion;
+     // WanderMotion motion;
+  FlockMotion motion;
 
 //--------------------------------------------------------------
 void ofApp::setup(){

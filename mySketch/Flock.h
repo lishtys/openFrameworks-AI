@@ -10,7 +10,6 @@ public:
 	~Flock();
 
 	std::vector<Boid> boid_list;
-	bool *inNeighbourhood;
 
 	Boid *leader;
 	float maxAccerlation;

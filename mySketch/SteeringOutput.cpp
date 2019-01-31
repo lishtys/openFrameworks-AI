@@ -5,6 +5,9 @@
 SteeringOutput::SteeringOutput()
 {
 	angular = 0.0;
+	Velocity = {0,0};
+	Rotation = 0;
+	linear = { 0,0 };
 }
 
 
