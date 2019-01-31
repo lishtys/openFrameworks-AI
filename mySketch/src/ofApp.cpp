@@ -54,8 +54,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-	motion.OnMousePressed(x,y);
-	// Wondermotion.OnMousePressed();
+	motion.OnMousePressed(x,y,button);
 }
 
 //--------------------------------------------------------------

@@ -12,8 +12,8 @@ public:
 	std::vector<Boid> boid_list;
 
 	Boid *leader;
+	Boid *leaderB;
 	float maxAccerlation;
-
 
 	ofVec2f GetNeighbourhoodCenter();
 

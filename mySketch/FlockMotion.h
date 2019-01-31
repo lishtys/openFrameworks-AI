@@ -13,7 +13,7 @@ public:
 	void Init();
 	void Update();
 	void Draw();
-	void OnMousePressed(int x,int y);
+	void OnMousePressed(int x,int y,int button);
 
 	Flock flock;
 
@@ -27,11 +27,13 @@ public:
 	DynamicWander d_wander;
 	DynamicMatchVel d_velMatch;
 	
-	std::vector<Avoid> avoid_list;
+	Avoid avoid;
 	std::vector<Obstacle> obstacles_list;
 
 	Boid leader;
+	Boid leaderB;
 	Rigidbody	 targetRigid;
+	Rigidbody	 targetRigidB;
 
 
 

@@ -2,6 +2,7 @@
 #include "Rigidbody.h"
 #include "SteeringOutput.h"
 #include "Obstacle.h"
+#include "Boid.h"
 
 
 class KinematicSteering
@@ -54,7 +55,8 @@ class Avoid : public KinematicSteering
 {
 public:
 
-	Obstacle* element;
+    std::vector<Obstacle>	 elements;
+    std::vector<Boid*>	 boids;
 	float characterRadius;
 	float maxLookahead=20;
 	ofVec2f findTargetPoint;

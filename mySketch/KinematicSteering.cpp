@@ -77,40 +77,40 @@ void KinematicWander::getSteering(SteeringOutput* output)
 void Avoid::getSteering(SteeringOutput* output)
 {
 	
-	if(character->Velocity.length()>0)
 	{
+		for (auto element : elements)
 		{
-			auto diff = element->mRigidbody.Position - character->Position;
+			auto diff = element.mRigidbody.Position - character->Position;
 			auto dist = diff.length();
 
-			auto bound = element->CircleRadius+characterRadius + offset;
+			auto bound = element.CircleRadius+characterRadius + offset;
 
 			if(dist<bound)
 			{
 				character->wAvo= 100.0f;
 				character->wWan = 0.1f;
-				float collision = (element->CircleRadius + characterRadius) ;
+				float collision = (element.CircleRadius + characterRadius) ;
 
 				if(dist <collision)
 				{
-					auto dir = character->Position - element->mRigidbody.Position;
+					auto dir = character->Position - element.mRigidbody.Position;
 					output->linear = diff;
 					output->linear *= output->linear.getNormalized()*100;
 					
 				}
 				else
 				{
-					auto moveDir = element->mRigidbody.Position - (character->Position + character->Velocity*ofGetLastFrameTime());
+					auto moveDir = element.mRigidbody.Position - (character->Position + character->Velocity*ofGetLastFrameTime());
 
 					if(moveDir.length()<dist)
 					{
 						if (abs(character->Velocity.x) <= abs(character->Velocity.y)) {
 
-							output->linear = ofVec2f((character->Position.x - element->mRigidbody.Position.x), character->Velocity.y);
+							output->linear = ofVec2f((character->Position.x - element.mRigidbody.Position.x), character->Velocity.y);
 							output->linear = output->linear.getNormalized()*(50*((bound) / dist));
 						}
 						else {
-							output->linear = ofVec2f(character->Velocity.x, (character->Position.y - element->mRigidbody.Position.y));
+							output->linear = ofVec2f(character->Velocity.x, (character->Position.y - element.mRigidbody.Position.y));
 							output->linear = output->linear.getNormalized()*(50*((bound) / dist));
 						}
 					}
@@ -122,6 +122,53 @@ void Avoid::getSteering(SteeringOutput* output)
 
 	}
 
+
+
+	// {
+	// 	for (auto element : boids)
+	// 	{
+	// 		if (&element->mRigidbody == character) continue;
+	// 		
+ //
+	// 		auto diff = element->mRigidbody.Position - character->Position;
+	// 		auto dist = diff.length();
+ //
+	// 		auto bound = element->CircleRadius + characterRadius + offset;
+ //
+	// 		if (dist < bound)
+	// 		{
+	// 			character->wAvo = 100.0f;
+	// 			character->wWan = 0.1f;
+	// 			float collision = (element->CircleRadius + characterRadius);
+ //
+	// 			if (dist < collision)
+	// 			{
+	// 				auto dir = character->Position - element->mRigidbody.Position;
+	// 				output->linear = diff;
+	// 				output->linear *= output->linear.getNormalized() * 100;
+ //
+	// 			}
+	// 			else
+	// 			{
+	// 				auto moveDir = element->mRigidbody.Position - (character->Position + character->Velocity*ofGetLastFrameTime());
+ //
+	// 				if (moveDir.length() < dist)
+	// 				{
+	// 					if (abs(character->Velocity.x) <= abs(character->Velocity.y)) {
+ //
+	// 						output->linear = ofVec2f((character->Position.x - element->mRigidbody.Position.x), character->Velocity.y);
+	// 						output->linear = output->linear.getNormalized()*(50 * ((bound) / dist));
+	// 					}
+	// 					else {
+	// 						output->linear = ofVec2f(character->Velocity.x, (character->Position.y - element->mRigidbody.Position.y));
+	// 						output->linear = output->linear.getNormalized()*(50 * ((bound) / dist));
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+ //
+	// 	}
+	// }
 
 
 

@@ -28,7 +28,10 @@ void FlockMotion::Init()
 		boid.mRigidbody.Rotation = 0;
 		flock.boid_list.push_back(boid);
 	
+		avoid.boids.push_back(&flock.boid_list[i]);
 	}
+
+	
 
 
 
@@ -40,8 +43,7 @@ void FlockMotion::Init()
 		obj.mRigidbody.Position.y = ofRandomHeight();
 		obstacles_list.push_back(obj);
 
-		Avoid avoid;
-		avoid_list.push_back(avoid);
+		
 	}
 
 
@@ -68,9 +70,6 @@ void FlockMotion::Update()
 {
 	
 
-
-
-
 	// Flock Seek
 	targetRigid.Position= flock.GetNeighbourhoodCenter();
 	if (flock.leader != nullptr)
@@ -87,17 +86,15 @@ void FlockMotion::Update()
 		SteeringOutput avoid_output;
 		SteeringOutput sep_output;
 		SteeringOutput vel_output;
+		SteeringOutput wander_output;
 		
 
-		// d_separation.mCharacter = &flock.boid_list[i];
-		// d_separation.getSteering(&steering_output);
+
 		if(&flock.boid_list[i]!= flock.leader)
 		{
 			 d_seek.character = &flock.boid_list[i].mRigidbody;
 			 d_align.character = &flock.boid_list[i].mRigidbody;
 			 d_seek.getSteering(&seek_output);
-			
-		
 		}
 
 		else
@@ -105,11 +102,11 @@ void FlockMotion::Update()
 			// Leader Wander
 			if (flock.leader != nullptr)
 			{
-				SteeringOutput steering_output;
 				d_wander.character = &flock.leader->mRigidbody;
-				d_wander.getSteering(&steering_output);
-				flock.leader->Update(steering_output, ofGetLastFrameTime());
-				flock.leader->mRigidbody.LookToMovment();
+				d_wander.getSteering(&wander_output);
+				flock.boid_list[i].Update(wander_output, ofGetLastFrameTime());
+				flock.boid_list[i].mRigidbody.LookToMovment();
+				continue;
 			}
 
 		}
@@ -117,12 +114,11 @@ void FlockMotion::Update()
 
 		//Avoid Collision
 
-		for (unsigned j = 0; j < 3; j++)
 		{
-			avoid_list[j].character = &flock.boid_list[i].mRigidbody;
-			avoid_list[j].characterRadius = flock.boid_list[i].CircleRadius;
-			avoid_list[j].element = &obstacles_list[j];
-			avoid_list[j].getSteering(&avoid_output);
+			avoid.character = &flock.boid_list[i].mRigidbody;
+			avoid.characterRadius = flock.boid_list[i].CircleRadius;
+			avoid.elements = obstacles_list;
+			avoid.getSteering(&avoid_output);
 		}
 
 
@@ -143,6 +139,7 @@ void FlockMotion::Update()
 		steering_output.linear += seek_output.linear* (flock.boid_list[i].mRigidbody.wSeek) ;
 		steering_output.linear += avoid_output.linear*(flock.boid_list[i].mRigidbody.wAvo) ;
 		steering_output.linear += sep_output.linear*(flock.boid_list[i].mRigidbody.wSep) ;
+		steering_output.linear += wander_output.linear*(flock.boid_list[i].mRigidbody.wWan) ;
 		steering_output.linear += vel_output.linear*(1) ;
 		steering_output.angular += align_output.angular ;
 
@@ -174,7 +171,7 @@ void FlockMotion::Draw()
 	
 }
 
-void FlockMotion::OnMousePressed(int x, int y)
+void FlockMotion::OnMousePressed(int x, int y,int button )
 {
 	for (unsigned i = 0; i < flock.boid_list.size(); i++)
 	{
@@ -183,9 +180,18 @@ void FlockMotion::OnMousePressed(int x, int y)
 		float dist = ofDist(pos.x, pos.y,x , y);
 		 if (dist < boid->CircleRadius)
 		{
-			if (flock.leader != nullptr) flock.leader->mColor = { 0,0,0 };
-			flock.leader = boid;  boid->mColor = { 255,0,0 };
-			targetRigid = flock.leader->mRigidbody;
+			 if(button==0)
+			 {
+				 if (flock.leader != nullptr) flock.leader->mColor = { 0,0,0 };
+				 flock.leader = boid;  boid->mColor = { 255,0,0 };
+				 targetRigid = flock.leader->mRigidbody;
+			 }else
+			 {
+				 if (flock.leader != nullptr) flock.leaderB->mColor = { 0,0,0 };
+				 flock.leaderB = boid;  boid->mColor = { 0,255,0 };
+				 targetRigidB = flock.leader->mRigidbody;
+			 }
+			
 		}
 	}
 
