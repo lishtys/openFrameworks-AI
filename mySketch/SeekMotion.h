@@ -10,13 +10,9 @@ public:
 
 
 	void Init();
-
 	void Update();
-
-
 	void Draw();
-
-	void OnMousePressed();
+	void OnMousePressed(int x,int y, int button);
 
 	DynamicArrive arrive;
 	DynamicAlign align;

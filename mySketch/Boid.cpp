@@ -30,35 +30,73 @@ void Boid::Draw()
 	auto tri3 = pos; tri3.y -= (CircleRadius-2); tri3.x += CircleRadius / 1.5f;
 	ofDrawTriangle(tri1.x, tri1.y, tri2.x, tri2.y, tri3.x, tri3.y);
 	ofPopMatrix();//this restores the transformations saved before so the transformations made in between push and pop matrix dont affect what's drawn after this. 
-	
+
+
+	for (auto point : mTrack.points)
+	{
+		ofDrawCircle(point.x, point.y,2);
+	}
 	
 	
 }
-
+float timeCnt;
 void Boid::Update(const SteeringOutput& steer, float deltaTime)
 {
+	mRigidbody.Update(steer, deltaTime);
 
-	mRigidbody.Update(steer,deltaTime);
+
+	if(isPassingEdge)
+	{
+		if (mRigidbody.Position.x > ofGetWidth() + CircleRadius)
+		{
+			mRigidbody.Position.x = -CircleRadius;
+		}
+		if (mRigidbody.Position.x < -CircleRadius)
+		{
+			mRigidbody.Position.x = ofGetWidth() + CircleRadius;
+		}
+
+		if (mRigidbody.Position.y > ofGetHeight() + CircleRadius)
+		{
+			mRigidbody.Position.y = -CircleRadius;
+		}
+
+		if (mRigidbody.Position.y < -CircleRadius)
+		{
+			mRigidbody.Position.y = ofGetHeight() + CircleRadius;
+		}
+	}
+	else
+	{
+		if (mRigidbody.Position.x > ofGetWidth() - CircleRadius)
+		{
+			mRigidbody.Position.x = ofGetWidth() -CircleRadius;
+		}
+		if (mRigidbody.Position.x < CircleRadius)
+		{
+			mRigidbody.Position.x = CircleRadius;
+		}
+
+		if (mRigidbody.Position.y > ofGetHeight() - CircleRadius)
+		{
+			mRigidbody.Position.y = ofGetHeight() - CircleRadius;
+		}
+
+		if (mRigidbody.Position.y < CircleRadius)
+		{
+			mRigidbody.Position.y =  CircleRadius;
+		}
+	}
+
+	// Add Tracking
+
+	timeCnt += ofGetLastFrameTime();
+	if (timeCnt > .5)
+	{
+		mTrack.AddBoid(mRigidbody.Position);
+		timeCnt = 0;
+	}
 	
-	if (mRigidbody.Position.x > ofGetWidth()+CircleRadius)
-	{
-		mRigidbody.Position.x = -CircleRadius;
-	}
-	if (mRigidbody.Position.x < -CircleRadius)
-	{
-		mRigidbody.Position.x = ofGetWidth() + CircleRadius;
-	}
-
-	if (mRigidbody.Position.y > ofGetHeight()+ CircleRadius)
-	{
-		mRigidbody.Position.y =-CircleRadius;
-	}
-	
-	if (mRigidbody.Position.y < -CircleRadius)
-	{
-		mRigidbody.Position.y = ofGetHeight() + CircleRadius;
-	}
-
 	UpdateWeight();
 
 }

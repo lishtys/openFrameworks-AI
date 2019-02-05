@@ -14,7 +14,9 @@ BasicMotion::~BasicMotion()
 
 void BasicMotion::Init()
 {
+	m_boid.isPassingEdge = false;
 	m_boid.mRigidbody.Velocity = ofVec2f(100, 0);
+	m_boid.mRigidbody.Position = ofVec2f(0, ofGetHeight()- m_boid.CircleRadius);
 
 
 	
@@ -24,27 +26,23 @@ void BasicMotion::Init()
 void BasicMotion::Update()
 {
 	SteeringOutput steer;
-
-	
-	if(m_boid.mRigidbody.Position.y == ofGetHeight() && m_boid.mRigidbody.Position.x == ofGetWidth())
+	auto cRadius = m_boid.CircleRadius;
+	if(m_boid.mRigidbody.Position.y == ofGetHeight()- cRadius && m_boid.mRigidbody.Position.x == ofGetWidth()- cRadius)
 	{
-		// m_boid.mRigidbody.Orientation = 3.14;
 		m_boid.mRigidbody.Velocity = ofVec2f(-100, 0);
 	}
-	else if (m_boid.mRigidbody.Position.y == ofGetHeight() && m_boid.mRigidbody.Position.x == 0)
+	else if (m_boid.mRigidbody.Position.y == ofGetHeight()- cRadius && m_boid.mRigidbody.Position.x == cRadius)
 	{
-		// m_boid.mRigidbody.Orientation = 4.6;
 		m_boid.mRigidbody.Velocity = ofVec2f(0, -100);
 	}
-	else if (m_boid.mRigidbody.Position.y == 0 && m_boid.mRigidbody.Position.x == ofGetWidth())
+	else if (m_boid.mRigidbody.Position.y == cRadius && m_boid.mRigidbody.Position.x == ofGetWidth()- cRadius)
 	{
-		// m_boid.mRigidbody.Orientation = 1.571;
 		m_boid.mRigidbody.Velocity = ofVec2f(0, 100);
 
 	}
-	else if (m_boid.mRigidbody.Position.y == 0 && m_boid.mRigidbody.Position.x == 0)
+	else if (m_boid.mRigidbody.Position.y == cRadius && m_boid.mRigidbody.Position.x == cRadius)
 	{
-		// m_boid.mRigidbody.Orientation = 0;
+		m_boid.mRigidbody.Velocity = ofVec2f(100, 0);
 
 	}
 
@@ -54,28 +52,17 @@ void BasicMotion::Update()
 
 
 
-	// Add Tracking
 
-	timeCnt += ofGetLastFrameTime();
-	if(timeCnt>2)
-	{
-		Boid boid;
-		boid.mRigidbody.Position = m_boid.mRigidbody.Position;
-		boid.mRigidbody.Orientation = m_boid.mRigidbody.Orientation;
-		mTrack.AddBoid(boid);
-		timeCnt = 0;
-	}
 
 
 }
 
 void BasicMotion::Draw()
 {
-	mTrack.Draw();
 	m_boid.Draw();
 }
 
-void BasicMotion::OnMousePressed(int x,int y)
+void BasicMotion::OnMousePressed(int x,int y,int button)
 {
 
 	

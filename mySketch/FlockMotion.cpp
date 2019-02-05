@@ -2,6 +2,7 @@
 #include <ofAppGlutWindow.h>
 #include "of3dPrimitives.h"
 #include "ofBitmapFont.h"
+#include "ofApp.h"
 
 
 FlockMotion::FlockMotion()
@@ -15,6 +16,9 @@ FlockMotion::~FlockMotion()
 
 void FlockMotion::Init()
 {
+	flock.boid_list.clear();
+	avoid.boids.clear();
+	obstacles_list.clear();
 
 
 	for (unsigned i = 0; i < 20; i++)
@@ -42,7 +46,6 @@ void FlockMotion::Init()
 		obj.mRigidbody.Position.x = ofRandomWidth();
 		obj.mRigidbody.Position.y = ofRandomHeight();
 		obstacles_list.push_back(obj);
-
 		
 	}
 
@@ -56,8 +59,8 @@ void FlockMotion::Init()
 	d_separation.maxAcc = 20;
 	
 	
-	k_separation.mFlock = &flock;
-	k_separation.sepDistance = 60;
+	// k_separation.mFlock = &flock;
+	// k_separation.sepDistance = 40;
 
 	d_velMatch.mFlock = &flock;
 
@@ -74,6 +77,9 @@ void FlockMotion::Update()
 	targetRigid.Position= flock.GetNeighbourhoodCenter();
 	if (flock.leader != nullptr)
 		targetRigid = flock.leader->mRigidbody;
+	
+	if (flock.leaderB != nullptr)
+		targetRigidB = flock.leaderB->mRigidbody;
 
 	d_seek.targetBoid = &targetRigid;
 	d_align.targetBoid = &targetRigid;
@@ -87,10 +93,37 @@ void FlockMotion::Update()
 		SteeringOutput sep_output;
 		SteeringOutput vel_output;
 		SteeringOutput wander_output;
+
+		if (flock.leaderB == nullptr &&flock.leader == nullptr)
+		{
+			d_seek.targetBoid = &targetRigid;
+			d_align.targetBoid = &targetRigid;
+		}
+		else if(flock.leaderB != nullptr&&flock.leader == nullptr)
+		{
+			d_seek.targetBoid = &targetRigidB;
+			d_align.targetBoid = &targetRigidB;
+		}
+		else if(flock.leaderB != nullptr &&flock.leader != nullptr)
+		{
+			auto bDis = (flock.leaderB->mRigidbody.Position - flock.boid_list[i].mRigidbody.Position).length();
+			auto aDis = (flock.leader->mRigidbody.Position - flock.boid_list[i].mRigidbody.Position).length();
+
+			if(bDis<aDis)
+			{
+				d_seek.targetBoid = &targetRigidB;
+				d_align.targetBoid = &targetRigidB;
+			}else
+			{
+				d_seek.targetBoid = &targetRigid;
+				d_align.targetBoid = &targetRigid;
+			}
+		}
+
+
 		
 
-
-		if(&flock.boid_list[i]!= flock.leader)
+		if(&flock.boid_list[i]!= flock.leader && &flock.boid_list[i] != flock.leaderB)
 		{
 			 d_seek.character = &flock.boid_list[i].mRigidbody;
 			 d_align.character = &flock.boid_list[i].mRigidbody;
@@ -100,14 +133,15 @@ void FlockMotion::Update()
 		else
 		{
 			// Leader Wander
-			if (flock.leader != nullptr)
+			if (flock.leader != nullptr || flock.leaderB != nullptr)
 			{
-				d_wander.character = &flock.leader->mRigidbody;
+				d_wander.character = &flock.boid_list[i].mRigidbody;
 				d_wander.getSteering(&wander_output);
 				flock.boid_list[i].Update(wander_output, ofGetLastFrameTime());
 				flock.boid_list[i].mRigidbody.LookToMovment();
 				continue;
 			}
+		
 
 		}
 
@@ -130,6 +164,11 @@ void FlockMotion::Update()
 		d_separation.mCharacter = &flock.boid_list[i];
 		d_separation.getSteering(&sep_output);
 
+
+
+		d_wander.character = &flock.boid_list[i].mRigidbody;
+		d_wander.getSteering(&wander_output);
+
 		targetRigid.Orientation = d_align.character->GetMovementOrientation();
 		d_align.getSteering(&align_output);
 
@@ -137,10 +176,10 @@ void FlockMotion::Update()
 		SteeringOutput steering_output;
 
 		steering_output.linear += seek_output.linear* (flock.boid_list[i].mRigidbody.wSeek) ;
-		steering_output.linear += avoid_output.linear*(flock.boid_list[i].mRigidbody.wAvo) ;
+		 steering_output.linear += avoid_output.linear*(flock.boid_list[i].mRigidbody.wAvo) ;
 		steering_output.linear += sep_output.linear*(flock.boid_list[i].mRigidbody.wSep) ;
-		steering_output.linear += wander_output.linear*(flock.boid_list[i].mRigidbody.wWan) ;
-		steering_output.linear += vel_output.linear*(1) ;
+		 steering_output.linear += wander_output.linear*(flock.boid_list[i].mRigidbody.wWan) ;
+		 steering_output.linear += vel_output.linear*(flock.boid_list[i].mRigidbody.wVel) ;
 		steering_output.angular += align_output.angular ;
 
 		flock.boid_list[i].Update(steering_output, ofGetLastFrameTime());
@@ -187,9 +226,9 @@ void FlockMotion::OnMousePressed(int x, int y,int button )
 				 targetRigid = flock.leader->mRigidbody;
 			 }else
 			 {
-				 if (flock.leader != nullptr) flock.leaderB->mColor = { 0,0,0 };
+				 if (flock.leaderB != nullptr) flock.leaderB->mColor = { 0,0,0 };
 				 flock.leaderB = boid;  boid->mColor = { 0,255,0 };
-				 targetRigidB = flock.leader->mRigidbody;
+				 targetRigidB = flock.leaderB->mRigidbody;
 			 }
 			
 		}

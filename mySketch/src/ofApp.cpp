@@ -6,30 +6,54 @@
 #include "../FlockMotion.h"
 
 
- // BasicMotion motion;
-   // SeekMotion motion;
-     // WanderMotion motion;
-  FlockMotion motion;
+	BasicMotion bMotion;
+	SeekMotion sMotion;
+    WanderMotion wMotion;
+	FlockMotion fMotion;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	motion.Init();
-	// Seekmotion.Init();
-	// Wondermotion.Init();
+
+
+
+
+
+	switch (currentMotionIdx)
+	{
+	case 0: bMotion.Init();break;
+	case 1: sMotion.Init();break;
+	case 2: wMotion.Init();break;
+	case 3: fMotion.Init();break;
+
+	}
+	
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	motion.Update();
-	// Seekmotion.Update();
-	// Wondermotion.Update();
+	
+
+	switch (currentMotionIdx)
+	{
+	case 0: bMotion.Update(); break;
+	case 1: sMotion.Update(); break;
+	case 2: wMotion.Update(); break;
+	case 3: fMotion.Update(); break;
+
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	motion.Draw();
-	// Seekmotion.Draw();
-	// Wondermotion.Draw();
+	
+	switch (currentMotionIdx)
+	{
+	case 0: bMotion.Draw(); break;
+	case 1: sMotion.Draw(); break;
+	case 2: wMotion.Draw(); break;
+	case 3: fMotion.Draw(); break;
+
+	}
 }
 
 //--------------------------------------------------------------
@@ -39,6 +63,13 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
+
+	if (key == 'q') currentMotionIdx = 0;
+	if (key == 'w') currentMotionIdx = 1;
+	if (key == 'e') currentMotionIdx = 2;
+	if (key == 'r') currentMotionIdx = 3;
+
+	setup();
 
 }
 
@@ -54,7 +85,14 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-	motion.OnMousePressed(x,y,button);
+	switch (currentMotionIdx)
+	{
+	case 0: bMotion.OnMousePressed(x,y,button); break;
+	case 1: sMotion.OnMousePressed(x, y, button); break;
+	case 2: wMotion.OnMousePressed(x, y, button); break;
+	case 3: fMotion.OnMousePressed(x, y, button); break;
+
+	}
 }
 
 //--------------------------------------------------------------

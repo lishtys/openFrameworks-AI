@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "Boid.h"
+#include "ofVec2f.h"
 
 class Tracking
 {
@@ -9,11 +9,10 @@ public:
 	~Tracking();
 
 
-	std::vector<Boid> boid_list;
+	std::vector<ofVec2f> points;
 
-	void AddBoid(Boid boid);
+	void AddBoid(ofVec2f p_f);
 
 
-	void Draw();
 };
 

@@ -21,7 +21,9 @@ void DynamicSeparation::getSteering(SteeringOutput* output)
 	// auto leader = mFlock->leader;
 	//
 	// ofVec2f targetVel={0,0};
- //
+	//
+	//
+	//
 	// for (auto element : boid_list)
 	// {
 	// 	auto diff = mCharacter->mRigidbody.Position - element.mRigidbody.Position  ;
@@ -40,27 +42,19 @@ void DynamicSeparation::getSteering(SteeringOutput* output)
 	auto boid_list = mFlock->boid_list;
 	auto leader = mFlock->leader;
 	auto maxAccerlation = mFlock->maxAccerlation;
-
+	
 	for (auto element : boid_list)
 	{
-		if (&element == mCharacter ) continue;;
-
 	
-		auto direction = element.mRigidbody.Position - mCharacter->mRigidbody.Position;
+		auto direction =  mCharacter->mRigidbody.Position- element.mRigidbody.Position;
 		auto distance = direction.length();
-
-		if (distance < sepDistance)
+	
+		if (distance < sepDistance&& distance>0.0001f)
 		{
-			auto strength = maxAcc * (sepDistance - distance) / sepDistance;
-
+			auto strength = 10000* 1/ (distance * distance) ;
 			output->linear += strength * direction.normalize();
 		}
-
-
-		if (output->linear.length() > maxAcc)
-		{
-			output->linear = output->linear.normalize()*maxAcc;
-		}
+		
 	}
 }
 
@@ -86,7 +80,7 @@ void DynamicMatchVel::getSteering(SteeringOutput* output)
 	targetVel = targetVel / cnt;
 	targetVel = targetVel- mCharacter->mRigidbody.Velocity;
 	
-	output->linear = targetVel/8;
+	output->linear = targetVel;
 
 	if (targetVel.length() > mFlock->maxAccerlation)
 

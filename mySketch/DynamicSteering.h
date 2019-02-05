@@ -49,7 +49,7 @@ class DynamicWander : public DynamicSteering
 {
 public:
 	ofVec2f wanderTarget;
-	float wanderRadius = 200;
+	float wanderRadius = 1000;
 
 	virtual void getSteering(SteeringOutput* output);
 };

@@ -19,9 +19,7 @@ void WanderMotion::Init()
 	// Dynamic
 	wander.character = &m_boid.mRigidbody;
 	wander.targetBoid = &targetRigid;
-	wander.maxAcceleration = 50;
-	wander.maxAngularAcc = 10;
-	wander.maxSpeed = 100;
+
 
 
 	
@@ -52,15 +50,15 @@ void WanderMotion::Update()
 	auto deltaTime = ofGetLastFrameTime();
 	SteeringOutput steer;
 
-	// kinematic_wander.getSteering(&steer);
+	 // kinematic_wander.getSteering(&steer);
 
 	 wander.getSteering(&steer);
  
 	 targetRigid.Orientation = m_boid.mRigidbody.GetMovementOrientation();
 	 align.getSteering(&steer);
-	
-	m_boid.Update(steer, deltaTime);
+	 m_boid.Update(steer, deltaTime);
 
+	
 	// m_boid.mRigidbody.LookToMovment();
 
 
@@ -69,13 +67,11 @@ void WanderMotion::Update()
 void WanderMotion::Draw()
 {
 	m_boid.Draw();
-
 	ofDrawCircle(targetRigid.Position.x, targetRigid.Position.y, 10);
 	ofDrawBitmapString(targetRigid.Orientation,100, 200);
-
 }
 
-void WanderMotion::OnMousePressed(int x,int y)
+void WanderMotion::OnMousePressed(int x,int y,int button)
 {
 	if (ofGetMousePressed())
 	{

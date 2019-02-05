@@ -118,9 +118,9 @@ float GetRandom(int max)
 void DynamicWander::getSteering(SteeringOutput* output)
 {
 
-	auto wanderDelta = GetRandom(3); // Determine noise ratio
-	auto dir = character->Velocity.getNormalized(); // Get center of wander circle
-	dir *= (60); // Multiply by distance
+	auto wanderDelta = GetRandom(4); 
+	auto dir = character->Velocity.getNormalized(); 
+	dir *= (200); // Multiply by distance
 	auto center = dir + (character->Position);
 	// Apply offset to get new target    
 	auto offset = ofVec2f(wanderRadius*cos(wanderDelta), wanderRadius*sin(wanderDelta));
@@ -132,7 +132,7 @@ void DynamicWander::getSteering(SteeringOutput* output)
 	if (seekDir.length() > 0)
 	{
 		output->linear = seekDir.getNormalized();
-		output->linear *= maxAcceleration;
+		output->linear *= 25;
 	}
 
 }

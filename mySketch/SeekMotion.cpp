@@ -49,7 +49,7 @@ void SeekMotion::Update()
 
 	arrive.getSteering(&steer);
 
-	
+	targetRigid.Orientation = align.character->GetMovementOrientation();
 	align.getSteering(&steer);
 
 	m_boid.Update(steer, deltaTime);
@@ -71,12 +71,11 @@ void SeekMotion::Draw()
 	
 }
 
-void SeekMotion::OnMousePressed()
+void SeekMotion::OnMousePressed(int x,int y,int button)
 {
   if(ofGetMousePressed())
   {
 	  targetRigid.Position.x = ofGetMouseX();
 	  targetRigid.Position.y = ofGetMouseY();
-	  m_boid.mRigidbody.Stop();
   }
 }

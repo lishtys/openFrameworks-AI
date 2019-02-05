@@ -57,7 +57,7 @@ float GetBiRandom(int max)
 
 void KinematicWander::getSteering(SteeringOutput* output)
 {
-	auto wanderDelta = GetBiRandom(3); // Determine noise ratio
+	auto wanderDelta = GetBiRandom(3)*1.5; // Determine noise ratio
 	auto dir = character->Velocity.getNormalized(); // Get center of wander circle
 	dir*=(60); // Multiply by distance
 	auto center =dir+(character->Position);
@@ -76,7 +76,6 @@ void KinematicWander::getSteering(SteeringOutput* output)
 
 void Avoid::getSteering(SteeringOutput* output)
 {
-	
 	{
 		for (auto element : elements)
 		{
@@ -87,7 +86,7 @@ void Avoid::getSteering(SteeringOutput* output)
 
 			if(dist<bound)
 			{
-				character->wAvo= 100.0f;
+				character->wAvo= 200.0f;
 				character->wWan = 0.1f;
 				float collision = (element.CircleRadius + characterRadius) ;
 
@@ -121,60 +120,6 @@ void Avoid::getSteering(SteeringOutput* output)
 
 
 	}
-
-
-
-	// {
-	// 	for (auto element : boids)
-	// 	{
-	// 		if (&element->mRigidbody == character) continue;
-	// 		
- //
-	// 		auto diff = element->mRigidbody.Position - character->Position;
-	// 		auto dist = diff.length();
- //
-	// 		auto bound = element->CircleRadius + characterRadius + offset;
- //
-	// 		if (dist < bound)
-	// 		{
-	// 			character->wAvo = 100.0f;
-	// 			character->wWan = 0.1f;
-	// 			float collision = (element->CircleRadius + characterRadius);
- //
-	// 			if (dist < collision)
-	// 			{
-	// 				auto dir = character->Position - element->mRigidbody.Position;
-	// 				output->linear = diff;
-	// 				output->linear *= output->linear.getNormalized() * 100;
- //
-	// 			}
-	// 			else
-	// 			{
-	// 				auto moveDir = element->mRigidbody.Position - (character->Position + character->Velocity*ofGetLastFrameTime());
- //
-	// 				if (moveDir.length() < dist)
-	// 				{
-	// 					if (abs(character->Velocity.x) <= abs(character->Velocity.y)) {
- //
-	// 						output->linear = ofVec2f((character->Position.x - element->mRigidbody.Position.x), character->Velocity.y);
-	// 						output->linear = output->linear.getNormalized()*(50 * ((bound) / dist));
-	// 					}
-	// 					else {
-	// 						output->linear = ofVec2f(character->Velocity.x, (character->Position.y - element->mRigidbody.Position.y));
-	// 						output->linear = output->linear.getNormalized()*(50 * ((bound) / dist));
-	// 					}
-	// 				}
-	// 			}
-	// 		}
- //
-	// 	}
-	// }
-
-
-
-
-
-
 }
 
 

@@ -14,7 +14,7 @@ public:
 	void Update();
 	void Draw();
 
-	void OnMousePressed(int x,int y);
+	void OnMousePressed(int x,int y,int button);
 
 	//Dynamic 
 	DynamicWander wander;
