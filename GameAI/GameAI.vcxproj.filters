@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Boid.cpp">
+      <Filter>src\Boid</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rigidbody.cpp">
+      <Filter>src\Boid</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tracking.cpp">
+      <Filter>src\Boid</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SteeringOutput.cpp">
+      <Filter>src\Steer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FlockSteering.cpp">
+      <Filter>src\Steer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Obstacle.cpp">
+      <Filter>src\Env</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Steering.cpp">
+      <Filter>src\Steer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Flock.cpp">
+      <Filter>src\Flock</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BasicMotion.cpp">
+      <Filter>src\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SeekMotion.cpp">
+      <Filter>src\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WanderMotion.cpp">
+      <Filter>src\Motion</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FlockMotion.cpp">
+      <Filter>src\Motion</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Boid">
+      <UniqueIdentifier>{0a603125-82a8-4200-b277-a108cbd44cc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Steer">
+      <UniqueIdentifier>{92ae4a45-6123-490b-851f-617062e813d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Env">
+      <UniqueIdentifier>{c40efb17-736e-4d68-8d8b-65b76db34ded}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Flock">
+      <UniqueIdentifier>{b25926b6-ad7e-4818-be06-320004d96e0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Motion">
+      <UniqueIdentifier>{f41ea72f-2418-4931-ba84-c5d5f8c21236}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Boid.h">
+      <Filter>src\Boid</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rigidbody.h">
+      <Filter>src\Boid</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tracking.h">
+      <Filter>src\Boid</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SteeringOutput.h">
+      <Filter>src\Steer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FlockSteering.h">
+      <Filter>src\Steer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Obstacle.h">
+      <Filter>src\Env</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Steering.h">
+      <Filter>src\Steer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Flock.h">
+      <Filter>src\Flock</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BasicMotion.h">
+      <Filter>src\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SeekMotion.h">
+      <Filter>src\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WanderMotion.h">
+      <Filter>src\Motion</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FlockMotion.h">
+      <Filter>src\Motion</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>
