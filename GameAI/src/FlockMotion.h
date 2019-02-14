@@ -3,6 +3,7 @@
 #include "SteeringOutput.h"
 #include "FlockSteering.h"
 #include "Steering.h"
+#include "ofApp.h"
 
 class FlockMotion
 {
@@ -14,9 +15,8 @@ public:
 	void Update();
 	void Draw();
 	void OnMousePressed(int x,int y,int button);
-
+	void SetApp(ofApp app);
 	Flock flock;
-
 
 	DynamicSeparation d_separation;
 	KinematicSeparation k_separation;
@@ -37,6 +37,7 @@ public:
 
 
 
+	float maxSpeed;
 
 
 

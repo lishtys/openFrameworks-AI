@@ -5,9 +5,13 @@
 #include "ofApp.h"
 
 
+
+
+
 FlockMotion::FlockMotion()
 {
 }
+
 
 
 FlockMotion::~FlockMotion()
@@ -55,8 +59,6 @@ void FlockMotion::Init()
 	d_separation.sepDistance = 100;
 	d_separation.maxAcc = 20;
 	
-	
-
 
 	d_velMatch.mFlock = &flock;
 
@@ -67,7 +69,11 @@ void FlockMotion::Init()
 
 void FlockMotion::Update()
 {
-	
+	for (unsigned i = 0; i < flock.boid_list.size(); i++)
+	{
+		flock.boid_list[i].mRigidbody.maxSpeed = maxSpeed;
+	}
+
 
 	// Flock Seek
 	targetRigid.Position= flock.GetNeighbourhoodCenter();
@@ -231,4 +237,8 @@ void FlockMotion::OnMousePressed(int x, int y,int button )
 	}
 
 	
+}
+
+void FlockMotion::SetApp(ofApp app)
+{
 }
