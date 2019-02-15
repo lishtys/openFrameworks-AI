@@ -4,6 +4,7 @@
 #include "SeekMotion.h"
 #include "WanderMotion.h"
 #include "FlockMotion.h"
+#include "../AStarPathfinding.h"
 
 
 BasicMotion bMotion;
@@ -11,12 +12,17 @@ SeekMotion sMotion;
 WanderMotion wMotion;
 FlockMotion fMotion;
 int currentMotionIdx;
+
+
+
+AStarPathfinding pathfinding;
+ofImage img;
 //--------------------------------------------------------------
 void ofApp::setup() {
 	// set up gui
 
-	fMotion.SetApp(*this);
-	fMotion.Init();
+	// fMotion.SetApp(*this);
+	// fMotion.Init();
 
 	gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
 	gui->addHeader(":: Controls ::");
@@ -54,6 +60,8 @@ void ofApp::setup() {
 	s_neighbor_radius->bind(neighbor_search_radius);
 
 
+	img.loadImage("path.png");
+	pathfinding.m_map.Setup(img);
 
 }
 
@@ -65,14 +73,14 @@ void ofApp::onToggleEvent(ofxDatGuiToggleEvent e)
 //--------------------------------------------------------------
 void ofApp::update() {
 
-	fMotion.Update();
-	fMotion.maxSpeed = sim_speed;
+	// fMotion.Update();
+	// fMotion.maxSpeed = sim_speed;
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 
-	fMotion.Draw();
+	// fMotion.Draw();
 }
 
 //--------------------------------------------------------------

@@ -61,6 +61,12 @@ class ofApp : public ofBaseApp{
 		float cohesion_weight;
 		float bounding_weight;
 		float flee_weight;
+
+
+	// Map
+
+
+
 };
 
 
