@@ -49,23 +49,23 @@
     <ClCompile Include="src\WanderMotion.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxDatGui\src\core\ofxDatGuiComponent.cpp">
+    <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiComponent.cpp">
       <Filter>addons\ofxDatGui\src\core</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp">
+    <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp">
       <Filter>addons\ofxDatGui\src\libs\ofxSmartFont</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.cpp">
+    <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.cpp">
       <Filter>addons\ofxDatGui\src</Filter>
     </ClCompile>
-    <ClCompile Include="Graph.cpp">
-      <Filter>src\TileMap</Filter>
+    <ClCompile Include="src\AStarPathfinding.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Node.cpp">
-      <Filter>src\TileMap</Filter>
+    <ClCompile Include="src\Graph.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="AStarPathfinding.cpp">
-      <Filter>src\PathFinding</Filter>
+    <ClCompile Include="src\Node.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,12 +95,6 @@
     </Filter>
     <Filter Include="addons\ofxDatGui\src\themes">
       <UniqueIdentifier>{2646318C-49AB-44C5-70D8-23E6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\TileMap">
-      <UniqueIdentifier>{f062ac0f-e3a6-4d13-8feb-4cf32134f854}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\PathFinding">
-      <UniqueIdentifier>{59db3542-b477-418b-a2d5-0a2a963fb75c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -146,77 +140,77 @@
     <ClInclude Include="src\WanderMotion.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGui2dPad.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGui2dPad.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGuiButton.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiButton.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGuiColorPicker.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiColorPicker.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGuiControls.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiControls.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGuiFRM.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiFRM.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGuiGroups.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiGroups.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGuiLabel.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiLabel.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGuiMatrix.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiMatrix.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGuiScrollView.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiScrollView.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGuiSlider.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiSlider.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGuiTextInput.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTextInput.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGuiTextInputField.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTextInputField.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGuiTimeGraph.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTimeGraph.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\core\ofxDatGuiComponent.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiComponent.h">
       <Filter>addons\ofxDatGui\src\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\core\ofxDatGuiConstants.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiConstants.h">
       <Filter>addons\ofxDatGui\src\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\core\ofxDatGuiEvents.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiEvents.h">
       <Filter>addons\ofxDatGui\src\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\core\ofxDatGuiIntObject.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiIntObject.h">
       <Filter>addons\ofxDatGui\src\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.h">
       <Filter>addons\ofxDatGui\src\libs\ofxSmartFont</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.h">
       <Filter>addons\ofxDatGui\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiTheme.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes\ofxDatGuiTheme.h">
       <Filter>addons\ofxDatGui\src\themes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h">
       <Filter>addons\ofxDatGui\src\themes</Filter>
     </ClInclude>
-    <ClInclude Include="Graph.h">
-      <Filter>src\TileMap</Filter>
+    <ClInclude Include="src\AStarPathfinding.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Node.h">
-      <Filter>src\TileMap</Filter>
+    <ClInclude Include="src\Graph.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="AStarPathfinding.h">
-      <Filter>src\PathFinding</Filter>
+    <ClInclude Include="src\Node.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

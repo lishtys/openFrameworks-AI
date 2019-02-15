@@ -4,7 +4,7 @@
 #include "SeekMotion.h"
 #include "WanderMotion.h"
 #include "FlockMotion.h"
-#include "../AStarPathfinding.h"
+#include "AStarPathfinding.h"
 
 
 BasicMotion bMotion;
@@ -75,12 +75,20 @@ void ofApp::update() {
 
 	// fMotion.Update();
 	// fMotion.maxSpeed = sim_speed;
+	pathfinding.GetPath(img.getWidth() / 2, img.getHeight() / 2, mouseX, mouseY);
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 
-	// fMotion.Draw();
+	ofBackground(0);
+
+	ofSetColor(255);
+	img.draw(0, 0);
+
+	ofSetColor(ofColor::red);
+	ofSetLineWidth(2);
+	pathfinding.path.draw();
 }
 
 //--------------------------------------------------------------

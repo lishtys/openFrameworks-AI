@@ -24,7 +24,6 @@ void AStarPathfinding::GetPath(int srcX, int srcY, int tarX, int tarY)
 	OpenSet.insert(srcNode);	
 	
 	targetNode = m_map.GetNode(ofClamp(tarX, 0, width - 1), ofClamp(tarY, 0, height - 1));
-	OpenSet.insert(targetNode);
 
 
 	//Looking 

@@ -57,5 +57,6 @@ public:
 	ofPtr<Node>parent;
 
 	ofVec2f pos;
-	float cost, estimate, known, total;
+	float cost = 1;
+	float estimate=0, known=0, total=0;
 };

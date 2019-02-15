@@ -12,7 +12,7 @@ public:
 	Graph m_map;
 
 
-	bool found = false;
+	bool found = true;
 
 
 	void GetPath(int srcX,int srcY,int tarX,int tarY);
