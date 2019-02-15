@@ -60,3 +60,8 @@ public:
 	float cost = 1;
 	float estimate=0, known=0, total=0;
 };
+
+
+inline bool operator<(const ofPtr<Node>& a, const ofPtr<Node>& b) {
+	return (*a) < (*b);
+}

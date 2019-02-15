@@ -75,7 +75,7 @@ void ofApp::update() {
 
 	// fMotion.Update();
 	// fMotion.maxSpeed = sim_speed;
-	pathfinding.GetPath(img.getWidth() / 2, img.getHeight() / 2, mouseX, mouseY);
+	pathfinding.GetPath(img.getWidth() / 2, img.getHeight() / 2, ofGetMouseX(), ofGetMouseY());
 }
 
 //--------------------------------------------------------------
@@ -89,6 +89,7 @@ void ofApp::draw() {
 	ofSetColor(ofColor::red);
 	ofSetLineWidth(2);
 	pathfinding.path.draw();
+	ofDrawBitmapString(pathfinding.pathList.size(), 400, 100);
 }
 
 //--------------------------------------------------------------

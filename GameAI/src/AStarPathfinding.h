@@ -23,6 +23,7 @@ public:
 	std::set<ofPtr<Node>> OpenSet, ClosedSet;
 	ofPtr<Node>  srcNode, targetNode;
 	ofPolyline path;
+	std::vector<ofVec2f>  pathList;
 
 	void Draw();
 };

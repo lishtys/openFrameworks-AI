@@ -36,34 +36,37 @@ void AStarPathfinding::GetPath(int srcX, int srcY, int tarX, int tarY)
 		OpenSet.erase(curNode);
 		ClosedSet.insert(curNode);
 
-		if(curNode==targetNode)
+		if(curNode->pos==targetNode->pos)
 		{
 			//Find
 			found = true;
 			auto cur = targetNode;
+			pathList.clear();
 			path.clear();
 
-
 			while (cur != srcNode) {
-				path.addVertex(cur->pos.x,cur->pos.y);
+				pathList.push_back(cur->pos);
+				path.addVertex(cur->pos.x, cur->pos.y);
 				cur = cur->parent;
 			}
+			pathList.push_back(srcNode->pos);
 			path.addVertex(srcNode->pos.x, srcNode->pos.y);
+
 		}
 
 
 		//Neighborhood
 
-		UpdateChildNodes(curNode, 0, 1);
+		UpdateChildNodes(curNode, -1, -1);
 		UpdateChildNodes(curNode, 0, -1);
 
 		UpdateChildNodes(curNode, 1, -1);
-		UpdateChildNodes(curNode, 1, 0);
-		UpdateChildNodes(curNode, 1, 1);
-	
-		UpdateChildNodes(curNode, -1, -1);
 		UpdateChildNodes(curNode, -1, 0);
+		UpdateChildNodes(curNode, +1, 0);
+	
 		UpdateChildNodes(curNode, -1, 1);
+		UpdateChildNodes(curNode, 0, 1);
+		UpdateChildNodes(curNode, 1, 1);
 		}
 
 	}
@@ -72,6 +75,10 @@ void AStarPathfinding::UpdateChildNodes(const ofPtr<Node>& center, int x, int y)
 {
 	int width = m_map.width;
 	int height = m_map.height;
+
+	x += center->pos.x;
+	y += center->pos.y;
+
 	auto valid= x >= 0 && y >= 0 && x < width && y < height;
 
 
@@ -79,7 +86,7 @@ void AStarPathfinding::UpdateChildNodes(const ofPtr<Node>& center, int x, int y)
 	{
 		auto node = m_map.GetNode(x, y);
 
-		if(ClosedSet.count(node)&&node->Walkable())
+		if(!ClosedSet.count(node)&& node->Walkable())
 		{
 			auto cost = center->known + center->cost;
 
