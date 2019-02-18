@@ -24,44 +24,45 @@ void ofApp::setup() {
 	// fMotion.SetApp(*this);
 	// fMotion.Init();
 
-	gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
-	gui->addHeader(":: Controls ::");
-	gui->addFooter();
+	// gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
+	// gui->addHeader(":: Controls ::");
+	// gui->addFooter();
+ //
+	// // weight sliders
+	// f_weights = gui->addFolder("Weights");
+ //
+	// s_separation = f_weights->addSlider("Separation", 0, 5.0);
+	// s_alignment = f_weights->addSlider("Alignment", 0, 5.0);
+	// s_cohesion = f_weights->addSlider("Cohesion", 0, 5.0);
+	// s_bounding = f_weights->addSlider("Bounding", 0, 5.0);
+	// s_flee = f_weights->addSlider("Flee", 0, 5.0);
+ //
+	// // weight slider bindings
+	// s_separation->bind(separation_weight);
+	// s_alignment->bind(alignment_weight);
+	// s_cohesion->bind(cohesion_weight);
+	// s_bounding->bind(bounding_weight);
+	// s_flee->bind(flee_weight);
+ //
+	// // other controls
+	// s_speed = gui->addSlider("Simluation Speed", 0, 10.0);
+	// s_desired_separation = gui->addSlider("Separation Distance", 0, 20.0);
+	// s_neighbor_radius = gui->addSlider("Neighbor Radius", 0, 20.0);
+ //
+	// t_wraparound = gui->addToggle("Wraparound");
+	// t_wraparound->onToggleEvent(this, &ofApp::onToggleEvent);
+ //
+	// gui->addFRM(1.0f);
+ //
+	// // and their bindings
+	// s_speed->bind(sim_speed);
+	// s_desired_separation->bind(desired_separation);
+	// s_neighbor_radius->bind(neighbor_search_radius);
 
-	// weight sliders
-	f_weights = gui->addFolder("Weights");
 
-	s_separation = f_weights->addSlider("Separation", 0, 5.0);
-	s_alignment = f_weights->addSlider("Alignment", 0, 5.0);
-	s_cohesion = f_weights->addSlider("Cohesion", 0, 5.0);
-	s_bounding = f_weights->addSlider("Bounding", 0, 5.0);
-	s_flee = f_weights->addSlider("Flee", 0, 5.0);
-
-	// weight slider bindings
-	s_separation->bind(separation_weight);
-	s_alignment->bind(alignment_weight);
-	s_cohesion->bind(cohesion_weight);
-	s_bounding->bind(bounding_weight);
-	s_flee->bind(flee_weight);
-
-	// other controls
-	s_speed = gui->addSlider("Simluation Speed", 0, 10.0);
-	s_desired_separation = gui->addSlider("Separation Distance", 0, 20.0);
-	s_neighbor_radius = gui->addSlider("Neighbor Radius", 0, 20.0);
-
-	t_wraparound = gui->addToggle("Wraparound");
-	t_wraparound->onToggleEvent(this, &ofApp::onToggleEvent);
-
-	gui->addFRM(1.0f);
-
-	// and their bindings
-	s_speed->bind(sim_speed);
-	s_desired_separation->bind(desired_separation);
-	s_neighbor_radius->bind(neighbor_search_radius);
-
-
-	img.loadImage("path.png");
-	pathfinding.m_map.Setup(img);
+	// img.loadImage("path.png");
+	// pathfinding.m_map.Setup(img);
+	pathfinding.m_map.Setup(40,40);
 
 }
 
@@ -75,7 +76,7 @@ void ofApp::update() {
 
 	// fMotion.Update();
 	// fMotion.maxSpeed = sim_speed;
-	pathfinding.GetPath(img.getWidth() / 2, img.getHeight() / 2, ofGetMouseX(), ofGetMouseY());
+	pathfinding.GetPath(30, 30, ofGetMouseX()/40, ofGetMouseY()/40);
 }
 
 //--------------------------------------------------------------
@@ -84,12 +85,11 @@ void ofApp::draw() {
 	ofBackground(0);
 
 	ofSetColor(255);
-	img.draw(0, 0);
+	img.draw(0, 0,900,900);
+	 pathfinding.m_map.DarwNodes();
+	pathfinding.Draw();
 
-	ofSetColor(ofColor::red);
-	ofSetLineWidth(2);
-	pathfinding.path.draw();
-	ofDrawBitmapString(pathfinding.pathList.size(), 400, 100);
+
 }
 
 //--------------------------------------------------------------

@@ -1,5 +1,5 @@
 #include "AStarPathfinding.h"
-
+#include "ofGLProgrammableRenderer.h"
 
 
 AStarPathfinding::AStarPathfinding()
@@ -42,15 +42,12 @@ void AStarPathfinding::GetPath(int srcX, int srcY, int tarX, int tarY)
 			found = true;
 			auto cur = targetNode;
 			pathList.clear();
-			path.clear();
 
 			while (cur != srcNode) {
-				pathList.push_back(cur->pos);
-				path.addVertex(cur->pos.x, cur->pos.y);
+				pathList.push_back(cur);
 				cur = cur->parent;
 			}
-			pathList.push_back(srcNode->pos);
-			path.addVertex(srcNode->pos.x, srcNode->pos.y);
+			pathList.push_back(srcNode);
 
 		}
 
@@ -112,6 +109,16 @@ void AStarPathfinding::UpdateChildNodes(const ofPtr<Node>& center, int x, int y)
 
 void AStarPathfinding::Draw()
 {
+	for (auto pathNode : pathList)
+	{
+		int x = pathNode->pos.x;
+		int y = pathNode->pos.y;
+
+		float scaleX = ofGetWidth() / m_map.width;
+		float scaleY = ofGetHeight() / m_map.height;
+		ofSetColor(ofColor::red);
+		ofDrawRectangle((x - 1)*scaleX, (y - 1) *scaleY, scaleX, scaleY);
+	}
 }
 
 

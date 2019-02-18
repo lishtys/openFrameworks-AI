@@ -259,10 +259,48 @@ void Avoid::getSteering(SteeringOutput* output)
 	}
 }
 
+void Follow::getSteering(SteeringOutput* output)
+{
+
+
+	auto predict = character->Velocity;
+	predict.normalize();
+	auto targetNode = path[curIdx];
+	if(character->Position.distance(targetNode.worldPos)<pRadius)
+	{
+		if(curIdx<path.size()-1)
+		{
+			curIdx++;
+		}
+		else
+		{
+			return;
+		}
+	}
+	
+	if (curIdx >= path.size())
+		return;
+	
+	
+	if (curIdx >= path.size() - 1)
+	{
+		KinematicSeek seek;
+		seek.character = character;
+		seek.targetPosition = path[curIdx].worldPos;
+		seek.getSteering(output);
+	}
+}
+
 
 void KinematicSeek::getSteering(SteeringOutput* output)
 {
-	auto dir = targetBoid->Position - character->Position;
+	auto dir = targetPosition - character->Position;
+	if (targetBoid != NULL)
+	{
+		 dir = targetBoid->Position - character->Position;
+	}
+	
+
 
 	if (dir.length() > 0)
 	{

@@ -12,8 +12,9 @@ public:
 
 
 	void Setup(ofPixels& pix);
+	void Setup(int col,int row);
 
-
+	void DarwNodes();
 
 	ofPtr<Node>& GetNode(int x, int y);
 	

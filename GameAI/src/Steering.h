@@ -2,6 +2,7 @@
 #include "Rigidbody.h"
 #include "SteeringOutput.h"
 #include "Obstacle.h"
+#include "Node.h"
 
 
 class Steering
@@ -106,5 +107,15 @@ public:
 	float maxLookahead = 20;
 	ofVec2f findTargetPoint;
 	float offset = 2;
+	virtual void getSteering(SteeringOutput* output);
+};
+
+
+class Follow : public Steering
+{
+public:
+	std::vector<Node> path;
+	float pRadius;
+	int curIdx;
 	virtual void getSteering(SteeringOutput* output);
 };
