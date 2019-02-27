@@ -24,6 +24,8 @@ public:
 		this->known = known;
 		total = known + estimate;
 	}
+	
+	//  Hand Coded
 	void SetCost(float cost) { // not walkable < 1 <= walkable
 		this->cost = cost;
 	}
@@ -31,7 +33,14 @@ public:
 	void SetEstimate(ofPtr<Cell> & target) {
 		int dx = abs(target->pos.x - pos.x);
 	    int dy = abs(target->pos.y	 - pos.y);
-		this->estimate = abs(dx - dy) + sqrt(2) * MIN(dx, dy);
+		//this->estimate = abs(dx - dy) + sqrt(2) * MIN(dx, dy);
+
+		// float F = sqrt(2) - 1;
+		// this->estimate=(dx < dy) ? F * dx + dy : F * dy + dx;
+
+		 this->estimate = sqrt(dx * dx + dy * dy);
+		//this->estimate = dx +dy;
+
 	}
 
 

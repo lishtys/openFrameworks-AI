@@ -77,6 +77,9 @@ void AStarPathfinding::UpdateChildNodes(const ofPtr<Cell>& center, int x, int y)
 	int width = m_map.width;
 	int height = m_map.height;
 
+	int nx = x;
+	int ny = y;
+
 	x += center->pos.x;
 	y += center->pos.y;
 
@@ -89,7 +92,9 @@ void AStarPathfinding::UpdateChildNodes(const ofPtr<Cell>& center, int x, int y)
 		node->isVisited = true;
 		if(!ClosedSet.count(node)&& node->Walkable())
 		{
-			auto cost = center->known + center->cost;
+			auto cost = center->known+1;
+			if (!(nx == 0 || ny == 0)) cost += sqrt(2) - 1;
+
 
 			if (OpenSet.count(node)) {
 				if (cost < node->known) {
@@ -101,6 +106,7 @@ void AStarPathfinding::UpdateChildNodes(const ofPtr<Cell>& center, int x, int y)
 			}
 			else
 			{
+				
 				node->SetEstimate(targetNode);
 				node->parent = center;
 				node->SetKnown(cost);

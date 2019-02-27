@@ -66,24 +66,7 @@ void TileMap::Setup(int col, int row)
 
 void TileMap::DarwNodes()
 {
-	for (auto node : NodeList)
-	{
-
-		// int x = node->pos.x;
-		// int y= node->pos.y;
-		//
-		// float scaleX = ofGetWidth() / width;
-		// float scaleY = ofGetHeight() / height;
-		//
-		// float cost = node->cost;
-		//
-		// if(cost>=10)
-		// ofSetColor(ofColor::black);
-		// else
-		// ofSetColor(ofColor::white);
-		//
-		// ofDrawRectangle((x-1)*scaleX, (y-1) *scaleY, scaleX, scaleY);
-	}
+	
 
 
 		
