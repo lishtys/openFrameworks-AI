@@ -1,5 +1,5 @@
 #pragma once
-#include "Graph.h"
+#include "TileMap.h"
 #include "ofPolyline.h"
 
 class AStarPathfinding
@@ -9,7 +9,7 @@ public:
 	~AStarPathfinding();
 
 
-	Graph m_map;
+	TileMap m_map;
 
 
 	bool found = true;
@@ -17,13 +17,17 @@ public:
 
 	void GetPath(int srcX,int srcY,int tarX,int tarY);
 
-	void UpdateChildNodes(const ofPtr<Node>& center, int x, int y);
+	void UpdateChildNodes(const ofPtr<Cell>& center, int x, int y);
 
 
-	std::set<ofPtr<Node>> OpenSet, ClosedSet;
-	ofPtr<Node>  srcNode, targetNode;
-	std::vector<ofPtr<Node> >  pathList;
+	std::set<ofPtr<Cell>> OpenSet, ClosedSet;
+	ofPtr<Cell>  srcNode, targetNode;
+	std::vector<ofPtr<Cell> >  pathList;
 
 	void Draw();
+
+	void OnKeyReleased(int key);
+
+	void OnMousePressed(int x, int y, int button);
 };
 

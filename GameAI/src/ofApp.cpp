@@ -5,6 +5,7 @@
 #include "WanderMotion.h"
 #include "FlockMotion.h"
 #include "AStarPathfinding.h"
+#include "../DFSPathfinding.h"
 
 
 BasicMotion bMotion;
@@ -14,8 +15,8 @@ FlockMotion fMotion;
 int currentMotionIdx;
 
 
-
 AStarPathfinding pathfinding;
+//DFSPathfinding pathfinding;
 ofImage img;
 //--------------------------------------------------------------
 void ofApp::setup() {
@@ -62,6 +63,9 @@ void ofApp::setup() {
 
 	// img.loadImage("path.png");
 	// pathfinding.m_map.Setup(img);
+
+
+
 	pathfinding.m_map.Setup(40,40);
 
 }
@@ -76,7 +80,7 @@ void ofApp::update() {
 
 	// fMotion.Update();
 	// fMotion.maxSpeed = sim_speed;
-	pathfinding.GetPath(30, 30, ofGetMouseX()/40, ofGetMouseY()/40);
+
 }
 
 //--------------------------------------------------------------
@@ -86,7 +90,7 @@ void ofApp::draw() {
 
 	ofSetColor(255);
 	img.draw(0, 0,900,900);
-	 pathfinding.m_map.DarwNodes();
+    pathfinding.m_map.DarwNodes();
 	pathfinding.Draw();
 
 
@@ -100,9 +104,7 @@ void ofApp::keyPressed(int key) {
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key) {
 
-
-
-
+	pathfinding.OnKeyReleased(key);
 }
 
 //--------------------------------------------------------------
@@ -118,6 +120,7 @@ void ofApp::mouseDragged(int x, int y, int button) {
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
 	
+	pathfinding.OnMousePressed(x, y, button);
 }
 
 //--------------------------------------------------------------

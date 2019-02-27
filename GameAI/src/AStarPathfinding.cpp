@@ -19,10 +19,14 @@ void AStarPathfinding::GetPath(int srcX, int srcY, int tarX, int tarY)
 
 	int width=m_map.width;
 	int height=m_map.height;
-
-	srcNode = m_map.GetNode(ofClamp(srcX, 0, width - 1), ofClamp(srcY, 0, height - 1));
-	OpenSet.insert(srcNode);	
 	
+	if(srcNode==nullptr)
+	{
+		srcNode = m_map.GetNode(ofClamp(srcX, 0, width - 1), ofClamp(srcY, 0, height - 1));
+	}
+	OpenSet.insert(srcNode);	
+
+	if (targetNode == nullptr)
 	targetNode = m_map.GetNode(ofClamp(tarX, 0, width - 1), ofClamp(tarY, 0, height - 1));
 
 
@@ -64,11 +68,11 @@ void AStarPathfinding::GetPath(int srcX, int srcY, int tarX, int tarY)
 		UpdateChildNodes(curNode, -1, 1);
 		UpdateChildNodes(curNode, 0, 1);
 		UpdateChildNodes(curNode, 1, 1);
-		}
-
 	}
 
-void AStarPathfinding::UpdateChildNodes(const ofPtr<Node>& center, int x, int y)
+}
+
+void AStarPathfinding::UpdateChildNodes(const ofPtr<Cell>& center, int x, int y)
 {
 	int width = m_map.width;
 	int height = m_map.height;
@@ -82,7 +86,7 @@ void AStarPathfinding::UpdateChildNodes(const ofPtr<Node>& center, int x, int y)
 	if(valid)
 	{
 		auto node = m_map.GetNode(x, y);
-
+		node->isVisited = true;
 		if(!ClosedSet.count(node)&& node->Walkable())
 		{
 			auto cost = center->known + center->cost;
@@ -109,16 +113,97 @@ void AStarPathfinding::UpdateChildNodes(const ofPtr<Node>& center, int x, int y)
 
 void AStarPathfinding::Draw()
 {
+	float scaleX = ofGetWidth() / m_map.width;
+	float scaleY = ofGetHeight() / m_map.height;
+
+
+
+
+	for (auto mapNode : m_map.NodeList)
+	{
+
+		if (mapNode->isVisited)
+		{
+			ofSetColor(ofColor::cadetBlue);
+			ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
+		}
+
+	}
+
+
+
 	for (auto pathNode : pathList)
 	{
 		int x = pathNode->pos.x;
 		int y = pathNode->pos.y;
 
-		float scaleX = ofGetWidth() / m_map.width;
-		float scaleY = ofGetHeight() / m_map.height;
+		
 		ofSetColor(ofColor::red);
-		ofDrawRectangle((x - 1)*scaleX, (y - 1) *scaleY, scaleX, scaleY);
+		ofDrawRectangle(x*scaleX, y *scaleY, scaleX, scaleY);
 	}
+
+
+	// highlight
+    float mX=ofGetMouseX();
+    float mY=ofGetMouseY();
+
+	int indexX = mX / scaleX;
+	int indexY = mY / scaleY;
+
+	ofSetColor(ofColor::yellow);
+	ofDrawRectangle((indexX)*scaleX, indexY*scaleY, scaleX, scaleY);
+
+	// SrcNode
+
+	if(srcNode!=nullptr)
+	{
+		ofSetColor(ofColor::green);
+		ofDrawRectangle(srcNode->pos.x*scaleX, srcNode->pos.y*scaleY, scaleX, scaleY);
+	}
+	
+	if(targetNode !=nullptr)
+	{
+		ofSetColor(ofColor::blue);
+		ofDrawRectangle(targetNode->pos.x*scaleX, targetNode->pos.y*scaleY, scaleX, scaleY);
+	}
+
+
+
+}
+
+void AStarPathfinding::OnKeyReleased(int key)
+{
+	if (key == 'r')
+	{
+		GetPath(30, 30, ofGetMouseX() / 40, ofGetMouseY() / 40);
+	}
+}
+
+void AStarPathfinding::OnMousePressed(int x, int y, int button)
+{
+	float scaleX = ofGetWidth() / m_map.width;
+	float scaleY = ofGetHeight() / m_map.height;
+
+	if(button==0)
+	{
+		// highlight
+		float mX = ofGetMouseX();
+		float mY = ofGetMouseY();
+		int indexX = mX / scaleX;
+		int indexY = mY / scaleY;
+		srcNode = m_map.GetNode(indexX, indexY);
+	}
+	else
+	{
+		// highlight
+		float mX = ofGetMouseX();
+		float mY = ofGetMouseY();
+		int indexX = mX / scaleX;
+		int indexY = mY / scaleY;
+		targetNode = m_map.GetNode(indexX, indexY);
+	}
+	
+
 }
 
 

@@ -2,7 +2,7 @@
 #include "Rigidbody.h"
 #include "SteeringOutput.h"
 #include "Obstacle.h"
-#include "Node.h"
+#include "Cell.h"
 
 
 class Steering
@@ -114,7 +114,7 @@ public:
 class Follow : public Steering
 {
 public:
-	std::vector<Node> path;
+	std::vector<Cell> path;
 	float pRadius;
 	int curIdx;
 	virtual void getSteering(SteeringOutput* output);
