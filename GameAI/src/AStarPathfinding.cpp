@@ -177,11 +177,11 @@ void AStarPathfinding::Draw()
 			ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
 		}
 
-		// if(mapNode->cost==0)
-		// {
-		// 	ofSetColor(ofColor::black);
-		// 	ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
-		// }
+		if(mapNode->cost==0)
+		{
+			ofSetColor(ofColor::black);
+			ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
+		}
 	
 	}
 
