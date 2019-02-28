@@ -31,6 +31,7 @@ public:
 	void Draw();
 
 	void OnKeyReleased(int key);
+	void OnKeyPressed(int key);
 
 	void OnMousePressed(int x, int y, int button);
 
@@ -39,6 +40,11 @@ public:
 	// Pathfollowing
 	Boid m_boid;
 	Follow path_follow;
+
+
+	//Ctrl Flag
+
+	bool isAddingWall;
 
 };
 

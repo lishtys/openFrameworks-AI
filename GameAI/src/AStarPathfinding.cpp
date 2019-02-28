@@ -177,6 +177,12 @@ void AStarPathfinding::Draw()
 			ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
 		}
 
+		if(mapNode->cost==0)
+		{
+			ofSetColor(ofColor::black);
+			ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
+		}
+	
 	}
 
 
@@ -232,6 +238,19 @@ void AStarPathfinding::OnKeyReleased(int key)
 	{
 		GetPath(30, 30, ofGetMouseX() / 40, ofGetMouseY() / 40);
 	}
+
+	if (key == 'z')
+	{
+		isAddingWall = false;
+	}
+}
+
+void AStarPathfinding::OnKeyPressed(int key)
+{
+	if (key == 'z')
+	{
+		isAddingWall = true;
+	}
 }
 
 void AStarPathfinding::OnMousePressed(int x, int y, int button)
@@ -241,12 +260,25 @@ void AStarPathfinding::OnMousePressed(int x, int y, int button)
 
 	if(button==0)
 	{
-		// highlight
 		float mX = ofGetMouseX();
 		float mY = ofGetMouseY();
 		int indexX = mX / scaleX;
 		int indexY = mY / scaleY;
-		srcNode = m_map.GetNode(indexX, indexY);
+
+		if(!isAddingWall)
+		{
+			// highlight
+			
+			srcNode = m_map.GetNode(indexX, indexY);
+		}
+		else
+		{
+			auto node = m_map.GetNode(indexX, indexY);
+			node->SetCost(0);
+
+		}
+
+
 	}
 	else
 	{
