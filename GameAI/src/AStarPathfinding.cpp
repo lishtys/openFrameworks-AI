@@ -102,7 +102,7 @@ void AStarPathfinding::RunBoid()
 {
 
 
-	path_follow.pRadius = ofGetWidth() / m_map.width;
+	path_follow.pRadius = 20;
 	path_follow.path = pathList;
 	auto deltaTime = ofGetLastFrameTime();
 	SteeringOutput steer;
@@ -177,11 +177,11 @@ void AStarPathfinding::Draw()
 			ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
 		}
 
-		if(mapNode->cost==0)
-		{
-			ofSetColor(ofColor::black);
-			ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
-		}
+		// if(mapNode->cost==0)
+		// {
+		// 	ofSetColor(ofColor::black);
+		// 	ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
+		// }
 	
 	}
 
@@ -215,13 +215,13 @@ void AStarPathfinding::Draw()
 	if(srcNode!=nullptr)
 	{
 		ofSetColor(ofColor::green);
-		ofDrawRectangle(srcNode->pos.x*scaleX, srcNode->pos.y*scaleY, scaleX, scaleY);
+		ofDrawRectangle(srcNode->pos.x*scaleX, srcNode->pos.y*scaleY, 10,10);
 	}
 	
 	if(targetNode !=nullptr)
 	{
 		ofSetColor(ofColor::blue);
-		ofDrawRectangle(targetNode->pos.x*scaleX, targetNode->pos.y*scaleY, scaleX, scaleY);
+		ofDrawRectangle(targetNode->pos.x*scaleX, targetNode->pos.y*scaleY, 10, 10);
 	}
 
 	//boid

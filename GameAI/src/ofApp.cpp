@@ -61,12 +61,13 @@ void ofApp::setup() {
 	// s_neighbor_radius->bind(neighbor_search_radius);
 
 
-	// img.loadImage("path.png");
-	// pathfinding.m_map.Setup(img);
+
 	}
 
-
-	pathfinding.m_map.Setup(40,40);
+	img.loadImage("EAEBuildingMap.png");
+	 pathfinding.m_map.Setup(img);
+//	pathfinding.m_map.Setup(500,275);
+//	pathfinding.m_map.Setup(50,27);
 
 }
 
@@ -88,7 +89,7 @@ void ofApp::draw() {
 	// ofBackground(0);
 
 	ofSetColor(255);
-	img.draw(0, 0,900,900);
+	img.draw(0, 0,2000,900);
     pathfinding.m_map.DarwNodes();
 	pathfinding.Draw();
 

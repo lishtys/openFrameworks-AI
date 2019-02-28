@@ -270,21 +270,27 @@ void Follow::getSteering(SteeringOutput* output)
 	auto predict = character->Velocity;
 	predict.normalize();
 	auto targetNode = path[path.size() - curIdx - 1];
-	if(character->Position.distance(targetNode->worldPos)<pRadius)
+	
+	
 	{
-		if(curIdx<path.size()-1)
+		if (character->Position.distance(targetNode->worldPos) < pRadius)
 		{
-			curIdx++;
+			if (curIdx < path.size() - 1)
+			{
+				curIdx++;
+			}
+			else
+			{
+				return;
+			}
 		}
-		else
-		{
+
+		if (curIdx >= path.size())
 			return;
-		}
+
 	}
 	
-	if (curIdx >= path.size())
-		return;
-	
+
 	
 	if (curIdx < path.size() - 1)
 	{

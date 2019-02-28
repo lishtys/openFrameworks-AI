@@ -30,7 +30,7 @@ void TileMap::Setup(ofPixels& pix)
 			GetNode(x, y)->pos = ofVec2f(x, y);
 			float brightness = pix.getColor(x, y).getBrightness() / 255.;
 			
-			if (brightness == 0.)
+			if (brightness < 0.95)
 			
 			{ // black tiles are not walkable
 				GetNode(x, y)->SetCost(0);
