@@ -14,6 +14,12 @@ DFSPathfinding::~DFSPathfinding()
 
 void DFSPathfinding::GetPath(int srcX, int srcY, int tarX, int tarY)
 {
+
+	for (auto mapNode : m_map.NodeList)
+	{
+		mapNode->isVisited = false;
+	}
+
 	found = false;
 	OpenSet.clear();
 	ClosedSet.clear();
@@ -36,6 +42,7 @@ void DFSPathfinding::GetPath(int srcX, int srcY, int tarX, int tarY)
 
 	while (!found && !OpenSet.empty())
 	{
+		
 
 		auto curNode = *(OpenSet.begin());
 		OpenSet.erase(curNode);
@@ -77,7 +84,8 @@ void DFSPathfinding::UpdateChildNodes(const ofPtr<Cell>& center, int x, int y)
 {
 	int width = m_map.width;
 	int height = m_map.height;
-
+	int nx = x;
+	int ny = y;
 	x += center->pos.x;
 	y += center->pos.y;
 
@@ -94,6 +102,10 @@ void DFSPathfinding::UpdateChildNodes(const ofPtr<Cell>& center, int x, int y)
 			auto cost = center->known + center->cost;
 
 			if (OpenSet.count(node)) {
+
+				auto cost = center->known + 1;
+				if (!(nx == 0 || ny == 0)) cost += sqrt(2) - 1;
+
 				if (cost < node->known) {
 					OpenSet.erase(node);
 					node->parent = center;

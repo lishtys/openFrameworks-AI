@@ -32,12 +32,12 @@ void TileMap::Setup(ofPixels& pix)
 			
 			if (brightness < 0.85)
 			
-			{ // black tiles are not walkable
+			{ 
 				GetNode(x, y)->SetCost(0);
 			}
 
 			else if (brightness < 1.) 
-			{ // slow tiles (darker) have higher cost
+			{ 
 				GetNode(x, y)->SetCost(1. / brightness);
 			}
 
@@ -65,16 +65,10 @@ void TileMap::Setup(int col, int row)
 
 			NodeList.push_back(ofPtr<Cell>(new Cell()));
 			GetNode(x, y)->pos = ofVec2f(x, y);
-		//	float brightness = pix.getColor(x, y).getBrightness() / 255.;
-		//	if (brightness == 0.)
+	
 			{ 
 				GetNode(x, y)->SetCost(1);
 			}
-
-			// else if (brightness < 1.)
-			// { // slow tiles (darker) have higher cost
-			// 	GetNode(x, y)->SetCost(1. / brightness);
-			// }
 
 
 			GetNode(x, y)->worldPos.x = scaleX * x;
