@@ -83,7 +83,11 @@ void DynamicFlee::getSteering(SteeringOutput* output)
 void DynamicArrive::getSteering(SteeringOutput* output) 
 {
 
-	auto dir = targetBoid->Position - character->Position;
+	auto dir = targetPosition - character->Position;
+	if (targetBoid != NULL)
+	{
+		dir = targetBoid->Position - character->Position;
+	}
 
 	float targetSpeed;
 	
@@ -261,12 +265,12 @@ void Avoid::getSteering(SteeringOutput* output)
 
 void Follow::getSteering(SteeringOutput* output)
 {
-
+	if(path.size()==0) return;
 
 	auto predict = character->Velocity;
 	predict.normalize();
-	auto targetNode = path[curIdx];
-	if(character->Position.distance(targetNode.worldPos)<pRadius)
+	auto targetNode = path[path.size() - curIdx - 1];
+	if(character->Position.distance(targetNode->worldPos)<pRadius)
 	{
 		if(curIdx<path.size()-1)
 		{
@@ -282,12 +286,29 @@ void Follow::getSteering(SteeringOutput* output)
 		return;
 	
 	
-	if (curIdx >= path.size() - 1)
+	if (curIdx < path.size() - 1)
 	{
 		KinematicSeek seek;
 		seek.character = character;
-		seek.targetPosition = path[curIdx].worldPos;
+		seek.maxSpeed = 100;
+		seek.targetPosition = path[path.size()-curIdx-1]->worldPos;
 		seek.getSteering(output);
+	}
+
+	if (curIdx == path.size() - 1)
+	{
+		DynamicArrive arrive;
+		arrive.character = character;
+		arrive.maxAcceleration = 50;
+		arrive.maxAngularAcc = 10;
+		arrive.maxSpeed = 100;
+
+
+		arrive.TargetRadius = 5;
+		arrive.slowRadius = 200;
+		arrive.timeToTarget = 5;
+		arrive.targetPosition = path[path.size() - curIdx - 1]->worldPos;
+		arrive.getSteering(output);
 	}
 }
 

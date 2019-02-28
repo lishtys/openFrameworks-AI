@@ -114,7 +114,7 @@ public:
 class Follow : public Steering
 {
 public:
-	std::vector<Cell> path;
+	std::vector<ofPtr<Cell> > path;
 	float pRadius;
 	int curIdx;
 	virtual void getSteering(SteeringOutput* output);

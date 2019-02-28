@@ -4,6 +4,16 @@
 
 AStarPathfinding::AStarPathfinding()
 {
+	
+	path_follow.character = &m_boid.mRigidbody;
+	path_follow.maxAcceleration = 50;
+	path_follow.maxAngularAcc = 10;
+	path_follow.maxSpeed = 100;
+
+	path_follow.curIdx = 0;
+	
+
+
 }
 
 
@@ -13,9 +23,18 @@ AStarPathfinding::~AStarPathfinding()
 
 void AStarPathfinding::GetPath(int srcX, int srcY, int tarX, int tarY)
 {
+	// Graphic Clear
+	for (auto mapNode : m_map.NodeList)
+	{
+		mapNode->isVisited = false;
+	}
+
+
+	// Start of Pathfinding
 	found = false;
 	OpenSet.clear();
 	ClosedSet.clear();
+
 
 	int width=m_map.width;
 	int height=m_map.height;
@@ -69,6 +88,30 @@ void AStarPathfinding::GetPath(int srcX, int srcY, int tarX, int tarY)
 		UpdateChildNodes(curNode, 0, 1);
 		UpdateChildNodes(curNode, 1, 1);
 	}
+
+
+	if (srcNode != nullptr)
+		m_boid.mRigidbody.Position = srcNode->worldPos;
+	
+	path_follow.curIdx = 0;
+
+
+}
+
+void AStarPathfinding::RunBoid()
+{
+
+
+	path_follow.pRadius = ofGetWidth() / m_map.width;
+	path_follow.path = pathList;
+	auto deltaTime = ofGetLastFrameTime();
+	SteeringOutput steer;
+
+	path_follow.getSteering(&steer);
+
+	m_boid.Update(steer, deltaTime);
+
+	m_boid.mRigidbody.LookToMovment();
 
 }
 
@@ -138,6 +181,8 @@ void AStarPathfinding::Draw()
 
 
 
+
+
 	for (auto pathNode : pathList)
 	{
 		int x = pathNode->pos.x;
@@ -172,6 +217,10 @@ void AStarPathfinding::Draw()
 		ofSetColor(ofColor::blue);
 		ofDrawRectangle(targetNode->pos.x*scaleX, targetNode->pos.y*scaleY, scaleX, scaleY);
 	}
+
+	//boid
+	m_boid.Draw();
+	ofSetColor(0, 255, 0);
 
 
 

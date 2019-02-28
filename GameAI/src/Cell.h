@@ -38,8 +38,8 @@ public:
 		// float F = sqrt(2) - 1;
 		// this->estimate=(dx < dy) ? F * dx + dy : F * dy + dx;
 
-		 this->estimate = sqrt(dx * dx + dy * dy);
-		//this->estimate = dx +dy;
+		// this->estimate = sqrt(dx * dx + dy * dy);
+		this->estimate = dx +dy;
 
 	}
 

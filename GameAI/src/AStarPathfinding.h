@@ -1,6 +1,8 @@
 #pragma once
 #include "TileMap.h"
 #include "ofPolyline.h"
+#include "Boid.h"
+#include "Steering.h"
 
 class AStarPathfinding
 {
@@ -17,6 +19,8 @@ public:
 
 	void GetPath(int srcX,int srcY,int tarX,int tarY);
 
+	void RunBoid();
+
 	void UpdateChildNodes(const ofPtr<Cell>& center, int x, int y);
 
 
@@ -29,5 +33,12 @@ public:
 	void OnKeyReleased(int key);
 
 	void OnMousePressed(int x, int y, int button);
+
+
+
+	// Pathfollowing
+	Boid m_boid;
+	Follow path_follow;
+
 };
 

@@ -54,6 +54,10 @@ void TileMap::Setup(int col, int row)
 {
 	width =col, height =row;
 	NodeList.clear();
+	float scaleX = ofGetWidth() / width;
+	float scaleY = ofGetHeight() / height;
+
+
 	for (int y = 0; y < height; y++)
 	{
 		for (int x = 0; x < width; x++)
@@ -71,6 +75,10 @@ void TileMap::Setup(int col, int row)
 			// { // slow tiles (darker) have higher cost
 			// 	GetNode(x, y)->SetCost(1. / brightness);
 			// }
+
+
+			GetNode(x, y)->worldPos.x = scaleX * x;
+			GetNode(x, y)->worldPos.y = scaleY * y;
 		}
 	}
 }

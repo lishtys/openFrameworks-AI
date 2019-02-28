@@ -21,7 +21,7 @@ ofImage img;
 //--------------------------------------------------------------
 void ofApp::setup() {
 	// set up gui
-
+	{
 	// fMotion.SetApp(*this);
 	// fMotion.Init();
 
@@ -63,7 +63,7 @@ void ofApp::setup() {
 
 	// img.loadImage("path.png");
 	// pathfinding.m_map.Setup(img);
-
+	}
 
 
 	pathfinding.m_map.Setup(40,40);
@@ -78,15 +78,14 @@ void ofApp::onToggleEvent(ofxDatGuiToggleEvent e)
 //--------------------------------------------------------------
 void ofApp::update() {
 
-	// fMotion.Update();
-	// fMotion.maxSpeed = sim_speed;
+	pathfinding.RunBoid();
 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 
-	ofBackground(0);
+	// ofBackground(0);
 
 	ofSetColor(255);
 	img.draw(0, 0,900,900);
