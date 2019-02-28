@@ -119,16 +119,28 @@ void DFSPathfinding::Draw()
 	float scaleY = ofGetHeight() / m_map.height;
 	
 
-	for (auto mapNode : m_map.NodeList)
-	{
+
 		
-		if(mapNode->isVisited)
+		for (auto mapNode : m_map.NodeList)
 		{
-			ofSetColor(ofColor::cadetBlue);
-			ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
+
+			if (mapNode->isVisited)
+			{
+				ofSetColor(ofColor::cadetBlue);
+				ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
+			}
+
+			if(ofApp::showUnwalkableNode)
+			{
+				if (mapNode->cost == 0)
+				{
+					ofSetColor(ofColor::black);
+					ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
+				}
+			}
+
 		}
 
-	}
 
 
 	
@@ -171,27 +183,51 @@ void DFSPathfinding::Draw()
 
 void DFSPathfinding::OnKeyReleased(int key)
 {
-       if(key=='r')
-       {
-			GetPath(30, 30, ofGetMouseX() / 40, ofGetMouseY() / 40);
-       }
+	if (key == 'r')
+	{
+		GetPath(30, 30, ofGetMouseX() / 40, ofGetMouseY() / 40);
+	}
+
+	if (key == 'z')
+	{
+		isAddingWall = false;
+	}
 }
 
 
+void DFSPathfinding::OnKeyPressed(int key)
+{
+	if (key == 'z')
+	{
+		isAddingWall = true;
+	}
+}
+
 void DFSPathfinding::OnMousePressed(int x, int y, int button)
 {
-
 	float scaleX = ofGetWidth() / m_map.width;
 	float scaleY = ofGetHeight() / m_map.height;
-
-	if (button == 0)
+if(button==0)
 	{
-		// highlight
 		float mX = ofGetMouseX();
 		float mY = ofGetMouseY();
 		int indexX = mX / scaleX;
 		int indexY = mY / scaleY;
-		srcNode = m_map.GetNode(indexX, indexY);
+
+		if(!isAddingWall)
+		{
+			// highlight
+			
+			srcNode = m_map.GetNode(indexX, indexY);
+		}
+		else
+		{
+			auto node = m_map.GetNode(indexX, indexY);
+			node->SetCost(0);
+
+		}
+
+
 	}
 	else
 	{
@@ -202,4 +238,5 @@ void DFSPathfinding::OnMousePressed(int x, int y, int button)
 		int indexY = mY / scaleY;
 		targetNode = m_map.GetNode(indexX, indexY);
 	}
+	
 }

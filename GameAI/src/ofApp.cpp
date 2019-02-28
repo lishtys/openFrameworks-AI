@@ -5,7 +5,7 @@
 #include "WanderMotion.h"
 #include "FlockMotion.h"
 #include "AStarPathfinding.h"
-#include "../DFSPathfinding.h"
+#include "DFSPathfinding.h"
 
 
 BasicMotion bMotion;
@@ -15,73 +15,223 @@ FlockMotion fMotion;
 int currentMotionIdx;
 
 
-AStarPathfinding pathfinding;
-//DFSPathfinding pathfinding;
-ofImage img;
+AStarPathfinding a_pathfinding;
+DFSPathfinding d_pathfinding;
+
+ofImage img_maze;
+ofImage img_node;
+ofImage img_eae;
+
+
+ofImage* cur_img;
+
+
+
+
+
+bool ofApp::useAStar; 
+bool  ofApp::useMap;
+int ofApp::editorRow;
+int ofApp::editorColumns;
+int ofApp::HeuristicsType;
+float ofApp::hWeight;
+bool ofApp::needBoid;
+bool ofApp::showImg;
+bool ofApp::showUnwalkableNode;
+
+
+
+
+
+void SetupData()
+{
+	a_pathfinding.pathList.clear();
+	a_pathfinding.srcNode = nullptr;
+	a_pathfinding.targetNode = nullptr;	
+	
+	d_pathfinding.pathList.clear();
+	d_pathfinding.srcNode = nullptr;
+	d_pathfinding.targetNode = nullptr;
+	if (ofApp::useAStar)
+	{
+		if (ofApp::useMap)
+		{
+			img_node.loadImage("SimpleNode.png");
+			a_pathfinding.m_map.Setup(*cur_img);
+		}
+		else
+		{
+			a_pathfinding.m_map.Setup(ofApp::editorRow, ofApp::editorColumns);
+		}
+	}
+	else
+	{
+		if (ofApp::useMap)
+		{
+			d_pathfinding.m_map.Setup(*cur_img);
+		}
+		else
+		{
+
+			d_pathfinding.m_map.Setup(ofApp::editorRow, ofApp::editorColumns);
+		}
+
+	}
+}
+
+
+void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e)
+{
+
+	cout << "the option at index # " << e.child << " was selected " << endl;
+	if (e.child == 0) useAStar = true;
+	if (e.child == 1) useAStar = false;
+	SetupData();
+	
+}
+
+
+void ofApp::onToggleBoidEvent(ofxDatGuiToggleEvent e)
+{
+	cout << "the option at index # " << e.checked << " was selected " << endl;
+	needBoid = e.checked;
+	SetupData();
+}
+
+
+void ofApp::onMapDropdownEvent(ofxDatGuiDropdownEvent e)
+{
+	cout << "the option at index # " << e.child << " was selected " << endl;
+	if (e.child == 0) cur_img = NULL;
+	if (e.child == 1) cur_img = &img_node;
+	if (e.child == 2) cur_img = &img_maze;
+	if (e.child == 3) cur_img = &img_eae;
+
+	useMap = e.child != 0;
+
+	SetupData();
+}
+
+void ofApp::onShowNodeDropdownEvent(ofxDatGuiDropdownEvent e)
+{
+	cout << "the option at index # " << e.child << " was selected " << endl;
+	 showImg = e.child == 0;
+	 showUnwalkableNode = e.child == 1;
+	SetupData();
+}
+
+void ofApp::onHeuristicsDropdownEvent(ofxDatGuiDropdownEvent e)
+{
+	cout << "the option at index # " << e.child << " was selected " << endl;
+	HeuristicsType = e.child;
+	SetupData();
+}
+
+void ofApp::onButtonEvent(ofxDatGuiButtonEvent e)
+{
+		cout << e.target->getLabel() << " was clicked!" << endl;
+		SetupData();
+}
+
+void ofApp::onButtonGetPathEvent(ofxDatGuiButtonEvent e)
+{
+	if (useAStar)
+	{
+		a_pathfinding.GetPath(0,0,0,0);
+	}
+	else
+	{
+		d_pathfinding.GetPath(0, 0, 0, 0);
+	}
+}
+
+
 //--------------------------------------------------------------
 void ofApp::setup() {
+
+	useAStar = true;
+	needBoid = false;
+	useMap = false;
+	showUnwalkableNode = false;
+	showImg = true;
+	editorColumns = 27;
+	editorRow = 50;
+	hWeight = 1.0;
 	// set up gui
+
+
+	img_eae.loadImage("EAEBuildingMap.png");
+	img_node.loadImage("SimpleNode.png");
+	img_maze.loadImage("maze.png");
+
 	{
-	// fMotion.SetApp(*this);
-	// fMotion.Init();
+	 gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
+	//  gui->addHeader(":: Controls ::");
 
-	// gui = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
-	// gui->addHeader(":: Controls ::");
-	// gui->addFooter();
- //
-	// // weight sliders
-	// f_weights = gui->addFolder("Weights");
- //
-	// s_separation = f_weights->addSlider("Separation", 0, 5.0);
-	// s_alignment = f_weights->addSlider("Alignment", 0, 5.0);
-	// s_cohesion = f_weights->addSlider("Cohesion", 0, 5.0);
-	// s_bounding = f_weights->addSlider("Bounding", 0, 5.0);
-	// s_flee = f_weights->addSlider("Flee", 0, 5.0);
- //
-	// // weight slider bindings
-	// s_separation->bind(separation_weight);
-	// s_alignment->bind(alignment_weight);
-	// s_cohesion->bind(cohesion_weight);
-	// s_bounding->bind(bounding_weight);
-	// s_flee->bind(flee_weight);
- //
-	// // other controls
-	// s_speed = gui->addSlider("Simluation Speed", 0, 10.0);
-	// s_desired_separation = gui->addSlider("Separation Distance", 0, 20.0);
-	// s_neighbor_radius = gui->addSlider("Neighbor Radius", 0, 20.0);
- //
-	// t_wraparound = gui->addToggle("Wraparound");
-	// t_wraparound->onToggleEvent(this, &ofApp::onToggleEvent);
- //
-	// gui->addFRM(1.0f);
- //
-	// // and their bindings
-	// s_speed->bind(sim_speed);
-	// s_desired_separation->bind(desired_separation);
-	// s_neighbor_radius->bind(neighbor_search_radius);
+	vector<string> options = { "A Star", "D"};
+	algorithmnDropdown = gui->addDropdown("A Star", options);
+	algorithmnDropdown->select(0);
+	algorithmnDropdown->onDropdownEvent(this, &ofApp::onDropdownEvent);
 
 
+	vector<string> mapOption = { "Editor Mode", "Simple Node","Maze Node","Real Google Map" };
+	algorithmnDropdown = gui->addDropdown("Editor Mode", mapOption);
+	algorithmnDropdown->select(0);
+	algorithmnDropdown->onDropdownEvent(this, &ofApp::onMapDropdownEvent);
+
+	auto s_row = gui->addSlider("Editor Rows", 20, 500);
+	s_row->bind(editorRow);
+
+	s_row = gui->addSlider("Editor Column", 20, 270);
+	s_row->bind(editorColumns);
+
+
+
+	vector<string> iMGOption = { "Show Map", "Show Unwalkable Area", };
+	algorithmnDropdown = gui->addDropdown("Show Map", iMGOption);
+	algorithmnDropdown->select(0);
+	algorithmnDropdown->onDropdownEvent(this, &ofApp::onShowNodeDropdownEvent);
+
+
+		
+	vector<string> Heuristics = { "Manhattan", "Diagonal","Euclidean" };
+	algorithmnDropdown = gui->addDropdown("Manhattan", Heuristics);
+	algorithmnDropdown->select(0);
+	algorithmnDropdown->onDropdownEvent(this, &ofApp::onHeuristicsDropdownEvent);
+
+	s_row = gui->addSlider("Heuristics Weight", 0.1, 20);
+	s_row->bind(hWeight);
+
+
+	gui->addFooter();
+
+	auto toggle=	gui->addToggle("Show Boid");
+	toggle->onToggleEvent(this, &ofApp::onToggleBoidEvent);
+
+
+	auto btn= gui->addButton("Reload");
+	btn->onButtonEvent(this, &ofApp::onButtonEvent);
+	 btn= gui->addButton("Run Path Finding");
+	btn->onButtonEvent(this, &ofApp::onButtonGetPathEvent);
 
 	}
 
-//	img.loadImage("EAEBuildingMap.png");
-	//img.loadImage("maze.png");
-	img.loadImage("SimpleNode.png");
-	pathfinding.m_map.Setup(img);
-	// pathfinding.m_map.Setup(500,275);
-//	pathfinding.m_map.Setup(50,27);
+	
+	SetupData();
+	
+
+
 
 }
 
-void ofApp::onToggleEvent(ofxDatGuiToggleEvent e)
-{
-	cout << e.target->getLabel() << " checked = " << e.checked << endl;
-	wraparound = e.checked;
-}
+
 //--------------------------------------------------------------
 void ofApp::update() {
 
-	pathfinding.RunBoid();
+	if(useAStar&&needBoid)
+	{
+		a_pathfinding.RunBoid();
+	}
 
 }
 
@@ -91,23 +241,53 @@ void ofApp::draw() {
 	// ofBackground(0);
 
 	ofSetColor(255);
-	img.draw(0, 0,2000,900);
-    pathfinding.m_map.DarwNodes();
-	pathfinding.Draw();
 
+	if(useMap&&showImg)
+	{
+		if(cur_img!=NULL)
+		cur_img->draw(0, 0, 1920, 1080);
+	}
+	
 
+	if (useAStar)
+	{
+		a_pathfinding.m_map.DarwNodes();
+		a_pathfinding.Draw();
+	}
+	else
+	{
+		d_pathfinding.m_map.DarwNodes();
+		d_pathfinding.Draw();
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
-	pathfinding.OnKeyPressed(key);
+
+	if (useAStar)
+	{
+		a_pathfinding.OnKeyPressed(key);
+	}
+	else
+	{
+		d_pathfinding.OnKeyPressed(key);
+	}
 
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key) {
 
-	pathfinding.OnKeyReleased(key);
+
+	if (useAStar)
+	{
+		a_pathfinding.OnKeyReleased(key);
+
+	}
+	else
+	{
+		d_pathfinding.OnKeyReleased(key);
+	}
 
 }
 
@@ -118,7 +298,16 @@ void ofApp::mouseMoved(int x, int y) {
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button) {
-	pathfinding.OnMousePressed(x, y, button);
+	if (useAStar)
+	{
+		a_pathfinding.OnMousePressed(x, y, button);
+
+
+	}
+	else
+	{
+		d_pathfinding.OnMousePressed(x, y, button);
+	}
 
 }
 
@@ -151,6 +340,7 @@ void ofApp::windowResized(int w, int h) {
 void ofApp::gotMessage(ofMessage msg) {
 
 }
+
 
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo) {

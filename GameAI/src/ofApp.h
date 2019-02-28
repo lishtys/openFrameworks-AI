@@ -25,45 +25,47 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 
-		void onToggleEvent(ofxDatGuiToggleEvent e);
+		void onToggleBoidEvent(ofxDatGuiToggleEvent e);
 
 		ofxDatGui* gui;
 
 
 		// weights
 		ofxDatGuiFolder* f_weights;
-		ofxDatGuiSlider* s_separation;
-		ofxDatGuiSlider* s_alignment;
-		ofxDatGuiSlider* s_cohesion;
-		ofxDatGuiSlider* s_bounding;
-		ofxDatGuiSlider* s_flee;
+		ofxDatGuiDropdown* algorithmnDropdown;
 
-		// other controls
-		ofxDatGuiSlider* s_speed;
-		ofxDatGuiSlider* s_neighbor_radius;
-		ofxDatGuiSlider* s_desired_separation;
-
-		ofxDatGuiToggle* t_wraparound;
-
-
+		void onDropdownEvent(ofxDatGuiDropdownEvent e);
+		void onMapDropdownEvent(ofxDatGuiDropdownEvent e);
+		void onShowNodeDropdownEvent(ofxDatGuiDropdownEvent e);
+		void onHeuristicsDropdownEvent(ofxDatGuiDropdownEvent e);
+		void onButtonEvent(ofxDatGuiButtonEvent e);
+		void onButtonGetPathEvent(ofxDatGuiButtonEvent e);
+		
 	// ------------
 
 
 		// bound control variables
-		float desired_separation; // planes within this distance will invoke the force
-		float neighbor_search_radius; // planes within this radius are used in calculation
-		float sim_speed; // multiplied with the timestep to increase the speed of everything
-		bool wraparound; // whether or not to use a sphere or allow position looping
-
 	
-		float separation_weight;
-		float alignment_weight;
-		float cohesion_weight;
-		float bounding_weight;
-		float flee_weight;
+	
 
+//-- config
 
-	// Map
+	static bool useMap;
+	static bool useMazeMap;
+	static bool useGoogleMap;
+	 
+	static  bool useAStar; 
+	 
+	static bool showImg;
+	static bool showUnwalkableNode;
+	 
+	 
+	static int editorRow;
+	static int editorColumns;
+	static int HeuristicsType;
+	static float hWeight;
+
+	static  bool needBoid; 
 
 
 

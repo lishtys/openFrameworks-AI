@@ -1,5 +1,6 @@
 #include "AStarPathfinding.h"
 #include "ofGLProgrammableRenderer.h"
+#include "ofApp.h"
 
 
 AStarPathfinding::AStarPathfinding()
@@ -177,10 +178,14 @@ void AStarPathfinding::Draw()
 			ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
 		}
 
-		if(mapNode->cost==0)
+
+		if(ofApp::showUnwalkableNode)
 		{
-			ofSetColor(ofColor::black);
-			ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
+			if (mapNode->cost == 0)
+			{
+				ofSetColor(ofColor::black);
+				ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
+			}
 		}
 	
 	}
@@ -224,9 +229,13 @@ void AStarPathfinding::Draw()
 		ofDrawRectangle(targetNode->pos.x*scaleX, targetNode->pos.y*scaleY, 10, 10);
 	}
 
-	//boid
-	m_boid.Draw();
-	ofSetColor(0, 255, 0);
+	if(ofApp::needBoid)
+	{
+		//boid
+		m_boid.Draw();
+		ofSetColor(0, 255, 0);
+	}
+	
 
 
 

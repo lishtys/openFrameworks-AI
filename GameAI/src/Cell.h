@@ -2,6 +2,7 @@
 #include "ofMathConstants.h"
 #include "ofTypes.h"
 #include "ofVec2f.h"
+#include "ofApp.h"
 class Cell;
 typedef ofPtr<Cell> NodePtr;
 
@@ -33,14 +34,28 @@ public:
 	void SetEstimate(ofPtr<Cell> & target) {
 		int dx = abs(target->pos.x - pos.x);
 	    int dy = abs(target->pos.y	 - pos.y);
-		//this->estimate = abs(dx - dy) + sqrt(2) * MIN(dx, dy);
 
-		// float F = sqrt(2) - 1;
-		// this->estimate=(dx < dy) ? F * dx + dy : F * dy + dx;
+		switch (ofApp::HeuristicsType)
+		{
+		case 0:
+			this->estimate = dx + dy;
+			break;
+		case 1:
+			this->estimate = max(dx, dy);
+			break;
+		case 2:
+			this->estimate = sqrt(dx * dx + dy * dy);
+			break;
+		case 3:
+			this->estimate = abs(dx - dy) + sqrt(2) * MIN(dx, dy);;
+			break;
+		case 4:
+			float F = sqrt(2) - 1;
+			this->estimate=(dx < dy) ? F * dx + dy : F * dy + dx;
+			break;
+		}
 
-		// this->estimate = sqrt(dx * dx + dy * dy);
-		this->estimate = dx +dy;
-
+		this->estimate*=ofApp::hWeight;
 	}
 
 
