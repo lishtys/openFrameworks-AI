@@ -66,7 +66,7 @@ void ofApp::setup() {
 
 //	img.loadImage("EAEBuildingMap.png");
 	//img.loadImage("maze.png");
-	img.loadImage("nodemap.png");
+	img.loadImage("SimpleNode.png");
 	pathfinding.m_map.Setup(img);
 	// pathfinding.m_map.Setup(500,275);
 //	pathfinding.m_map.Setup(50,27);

@@ -281,6 +281,7 @@ void Follow::getSteering(SteeringOutput* output)
 			}
 			else
 			{
+				character->Velocity = { 0,0 };
 				return;
 			}
 		}
@@ -292,16 +293,16 @@ void Follow::getSteering(SteeringOutput* output)
 	
 
 	
-	if (curIdx < path.size() - 1)
-	{
-		KinematicSeek seek;
-		seek.character = character;
-		seek.maxSpeed = 100;
-		seek.targetPosition = path[path.size()-curIdx-1]->worldPos;
-		seek.getSteering(output);
-	}
+	// if (curIdx < path.size() - 1)
+	// {
+	// 	KinematicSeek seek;
+	// 	seek.character = character;
+	// 	seek.maxSpeed = 100;
+	// 	seek.targetPosition = path[path.size()-curIdx-1]->worldPos;
+	// 	seek.getSteering(output);
+	// }
 
-	if (curIdx == path.size() - 1)
+	if (curIdx <= path.size() - 1)
 	{
 		DynamicArrive arrive;
 		arrive.character = character;
@@ -310,9 +311,9 @@ void Follow::getSteering(SteeringOutput* output)
 		arrive.maxSpeed = 100;
 
 
-		arrive.TargetRadius = 5;
+		arrive.TargetRadius =0.5;
 		arrive.slowRadius = 200;
-		arrive.timeToTarget = 5;
+		arrive.timeToTarget = 0.2;
 		arrive.targetPosition = path[path.size() - curIdx - 1]->worldPos;
 		arrive.getSteering(output);
 	}
