@@ -91,8 +91,7 @@ void AStarPathfinding::GetPath(int srcX, int srcY, int tarX, int tarY)
 	}
 
 
-	if (srcNode != nullptr)
-		m_boid.mRigidbody.Position = srcNode->worldPos;
+	
 	
 	path_follow.curIdx = 0;
 
@@ -300,6 +299,34 @@ void AStarPathfinding::OnMousePressed(int x, int y, int button)
 	}
 	
 
+}
+
+void AStarPathfinding::OnMouseClick(int x, int y, int button)
+{
+	if (button == 0)
+	{
+		float scaleX = ofGetWidth() / m_map.width;
+		float scaleY = ofGetHeight() / m_map.height;
+		float mX = ofGetMouseX();
+		float mY = ofGetMouseY();
+		int indexX = mX / scaleX;
+		int indexY = mY / scaleY;
+
+
+		float X = m_boid.mRigidbody.Position.x;
+		float Y = m_boid.mRigidbody.Position.y;
+
+		int b_indexX = X / scaleX;
+		int b_indexY = Y / scaleY;
+
+		if (ofApp::needBoid)
+		{
+			targetNode = m_map.GetNode(indexX, indexY);
+			srcNode = m_map.GetNode(b_indexX, b_indexY);
+		}
+		GetPath(30, 30, ofGetMouseX() / 40, ofGetMouseY() / 40);
+	}
+	
 }
 
 

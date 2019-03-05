@@ -300,6 +300,7 @@ void ofApp::mouseMoved(int x, int y) {
 void ofApp::mouseDragged(int x, int y, int button) {
 	if (useAStar)
 	{
+		if(!needBoid)
 		a_pathfinding.OnMousePressed(x, y, button);
 
 
@@ -313,7 +314,10 @@ void ofApp::mouseDragged(int x, int y, int button) {
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
-	
+	if (useAStar&&needBoid){
+		a_pathfinding.OnMouseClick(x, y, button);
+	}
+
 }
 
 //--------------------------------------------------------------
