@@ -19,6 +19,9 @@
     <ClCompile Include="src\Cell.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\DFSPathfinding.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\Flock.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -58,18 +61,18 @@
     <ClCompile Include="src\WanderMotion.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiComponent.cpp">
+    <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiComponent.cpp">
       <Filter>addons\ofxDatGui\src\core</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp">
+    <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp">
       <Filter>addons\ofxDatGui\src\libs\ofxSmartFont</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.cpp">
+    <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.cpp">
       <Filter>addons\ofxDatGui\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\DFSPathfinding.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
+    <ClCompile Include="DecisionTree.cpp" />
+    <ClCompile Include="Action.cpp" />
+    <ClCompile Include="DTDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -116,6 +119,9 @@
     <ClInclude Include="src\Cell.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\DFSPathfinding.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\Flock.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -152,72 +158,72 @@
     <ClInclude Include="src\WanderMotion.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGui2dPad.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGui2dPad.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiButton.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiButton.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiColorPicker.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiColorPicker.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiControls.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiControls.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiFRM.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiFRM.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiGroups.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiGroups.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiLabel.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiLabel.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiMatrix.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiMatrix.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiScrollView.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiScrollView.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiSlider.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiSlider.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTextInput.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTextInput.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTextInputField.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTextInputField.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTimeGraph.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTimeGraph.h">
       <Filter>addons\ofxDatGui\src\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiComponent.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiComponent.h">
       <Filter>addons\ofxDatGui\src\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiConstants.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiConstants.h">
       <Filter>addons\ofxDatGui\src\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiEvents.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiEvents.h">
       <Filter>addons\ofxDatGui\src\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiIntObject.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiIntObject.h">
       <Filter>addons\ofxDatGui\src\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.h">
       <Filter>addons\ofxDatGui\src\libs\ofxSmartFont</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.h">
       <Filter>addons\ofxDatGui\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes\ofxDatGuiTheme.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes\ofxDatGuiTheme.h">
       <Filter>addons\ofxDatGui\src\themes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h">
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h">
       <Filter>addons\ofxDatGui\src\themes</Filter>
     </ClInclude>
-    <ClInclude Include="src\DFSPathfinding.h">
-      <Filter>src</Filter>
-    </ClInclude>
+    <ClInclude Include="DecisionTree.h" />
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="DTDemo.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

@@ -54,19 +54,19 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="../../../../Downloads/of_v0.10.1_vs2017_release/libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+    <Import Project="../../../../Desktop/of_v0.10.1_vs2017_release/libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="../../../../Downloads/of_v0.10.1_vs2017_release/libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+    <Import Project="../../../../Desktop/of_v0.10.1_vs2017_release/libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="../../../../Downloads/of_v0.10.1_vs2017_release/libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+    <Import Project="../../../../Desktop/of_v0.10.1_vs2017_release/libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="../../../../Downloads/of_v0.10.1_vs2017_release/libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+    <Import Project="../../../../Desktop/of_v0.10.1_vs2017_release/libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -100,7 +100,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
@@ -120,7 +120,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
@@ -140,7 +140,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ObjectFileName>$(IntDir)</ObjectFileName>
@@ -163,7 +163,7 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont;..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
@@ -180,13 +180,16 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\DFSPathfinding.cpp" />
+    <ClCompile Include="Action.cpp" />
+    <ClCompile Include="DecisionTree.cpp" />
+    <ClCompile Include="DTDemo.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\AStarPathfinding.cpp" />
     <ClCompile Include="src\BasicMotion.cpp" />
     <ClCompile Include="src\Boid.cpp" />
     <ClCompile Include="src\Cell.cpp" />
+    <ClCompile Include="src\DFSPathfinding.cpp" />
     <ClCompile Include="src\Flock.cpp" />
     <ClCompile Include="src\FlockMotion.cpp" />
     <ClCompile Include="src\FlockSteering.cpp" />
@@ -198,17 +201,20 @@
     <ClCompile Include="src\TileMap.cpp" />
     <ClCompile Include="src\Tracking.cpp" />
     <ClCompile Include="src\WanderMotion.cpp" />
-    <ClCompile Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiComponent.cpp" />
-    <ClCompile Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
-    <ClCompile Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.cpp" />
+    <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiComponent.cpp" />
+    <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
+    <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\DFSPathfinding.h" />
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="DecisionTree.h" />
+    <ClInclude Include="DTDemo.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\AStarPathfinding.h" />
     <ClInclude Include="src\BasicMotion.h" />
     <ClInclude Include="src\Boid.h" />
     <ClInclude Include="src\Cell.h" />
+    <ClInclude Include="src\DFSPathfinding.h" />
     <ClInclude Include="src\Flock.h" />
     <ClInclude Include="src\FlockMotion.h" />
     <ClInclude Include="src\FlockSteering.h" />
@@ -220,27 +226,27 @@
     <ClInclude Include="src\TileMap.h" />
     <ClInclude Include="src\Tracking.h" />
     <ClInclude Include="src\WanderMotion.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGui2dPad.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiButton.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiColorPicker.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiControls.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiFRM.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiGroups.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiLabel.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiMatrix.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiScrollView.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiSlider.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTextInput.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTextInputField.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTimeGraph.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiComponent.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiConstants.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiEvents.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiIntObject.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes\ofxDatGuiTheme.h" />
-    <ClInclude Include="..\..\..\..\Downloads\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGui2dPad.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiButton.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiColorPicker.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiControls.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiFRM.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiGroups.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiLabel.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiMatrix.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiScrollView.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiSlider.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTextInput.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTextInputField.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\components\ofxDatGuiTimeGraph.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiComponent.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiConstants.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiEvents.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\core\ofxDatGuiIntObject.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes\ofxDatGuiTheme.h" />
+    <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
