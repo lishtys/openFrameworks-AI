@@ -70,9 +70,15 @@
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.cpp">
       <Filter>addons\ofxDatGui\src</Filter>
     </ClCompile>
-    <ClCompile Include="DecisionTree.cpp" />
-    <ClCompile Include="Action.cpp" />
-    <ClCompile Include="DTDemo.cpp" />
+    <ClCompile Include="src\Action.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DecisionTree.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DTDemo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -221,9 +227,15 @@
     <ClInclude Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h">
       <Filter>addons\ofxDatGui\src\themes</Filter>
     </ClInclude>
-    <ClInclude Include="DecisionTree.h" />
-    <ClInclude Include="Action.h" />
-    <ClInclude Include="DTDemo.h" />
+    <ClInclude Include="src\Action.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DecisionTree.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DTDemo.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

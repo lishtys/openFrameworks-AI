@@ -6,7 +6,7 @@
 #include "FlockMotion.h"
 #include "AStarPathfinding.h"
 #include "DFSPathfinding.h"
-
+#include "DTDemo.h"
 
 BasicMotion bMotion;
 SeekMotion sMotion;
@@ -16,6 +16,8 @@ FlockMotion fMotion;
 AStarPathfinding a_pathfinding;
 DFSPathfinding d_pathfinding;
 
+
+DTDemo DTDemo;
 
 
 
