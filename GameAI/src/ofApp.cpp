@@ -75,7 +75,7 @@ void ofApp::onButtonGetPathEvent(ofxDatGuiButtonEvent e)
 //--------------------------------------------------------------
 void ofApp::setup() {
 
-	
+	DTDemo.Init();
 	
 
 
@@ -86,14 +86,14 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update() {
 
-	
+	DTDemo.Update();
 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 
-	
+	DTDemo.Draw();
 
 }
 

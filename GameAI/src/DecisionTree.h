@@ -21,6 +21,11 @@ public:
 	{
 		return this;
 	}
+	virtual void DoAction()
+	{
+		
+	}
+
 };
 
 class Decision : public DecisionTreeNode
