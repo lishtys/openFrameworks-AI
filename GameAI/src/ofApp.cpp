@@ -7,6 +7,7 @@
 #include "AStarPathfinding.h"
 #include "DFSPathfinding.h"
 #include "DTDemo.h"
+#include "BTDemo.h"
 
 BasicMotion bMotion;
 SeekMotion sMotion;
@@ -18,6 +19,7 @@ DFSPathfinding d_pathfinding;
 
 
 DTDemo DTDemo;
+BTDemo BTDemo;
 
 
 
@@ -75,8 +77,8 @@ void ofApp::onButtonGetPathEvent(ofxDatGuiButtonEvent e)
 //--------------------------------------------------------------
 void ofApp::setup() {
 
-	DTDemo.Init();
-	
+	//DTDemo.Init();
+	BTDemo.Init();
 
 
 
@@ -86,15 +88,15 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update() {
 
-	DTDemo.Update();
-
+//	DTDemo.Update();
+	BTDemo.Update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 
-	DTDemo.Draw();
-
+	//DTDemo.Draw();
+	BTDemo.Draw();
 }
 
 void ofApp::keyPressed(int key)

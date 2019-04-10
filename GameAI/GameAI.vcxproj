@@ -180,6 +180,8 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BTCore.cpp" />
+    <ClCompile Include="BTDemo.cpp" />
     <ClCompile Include="src\Action.cpp" />
     <ClCompile Include="src\DecisionTree.cpp" />
     <ClCompile Include="src\DTDemo.cpp" />
@@ -206,6 +208,8 @@
     <ClCompile Include="..\..\..\..\Desktop\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BTCore.h" />
+    <ClInclude Include="BTDemo.h" />
     <ClInclude Include="src\Action.h" />
     <ClInclude Include="src\DecisionTree.h" />
     <ClInclude Include="src\DTDemo.h" />

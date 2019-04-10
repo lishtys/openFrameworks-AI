@@ -79,6 +79,12 @@
     <ClCompile Include="src\DTDemo.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="BTCore.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="BTDemo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -234,6 +240,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\DTDemo.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="BTCore.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="BTDemo.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
