@@ -47,10 +47,8 @@ void BTDemo::Init()
 	chase_node->targetRigid = &m_boid.mRigidbody;
 	chase_node->arrive = &arrive;
 
-	auto seq = std::make_shared<Sequence>();
-	seq->addChild(chase_node);
-	tree.setRoot(seq);
 
+	boid_tree.setRoot(std::make_shared<Sequence>());
 	
 
 	
@@ -62,7 +60,6 @@ void BTDemo::Update()
 	SteeringOutput steer;
 	chase_node->steer = &steer;
 
-	tree.update();
 
 	m_monster.Update(steer, deltaTime);
 

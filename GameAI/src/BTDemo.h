@@ -38,6 +38,9 @@ public:
 };
 
 
+class CheckSpin
+
+
 class RespawnNode : public Node
 {
 public:
@@ -102,9 +105,9 @@ public:
 
 
 
-	BehaviorTree tree;
+	BehaviorTree mon_tree;
+	BehaviorTree boid_tree;
 	shared_ptr<ChaseNode> chase_node;
-	shared_ptr<ParallelSequence> parallel_sequence_node;
 };
 
 
