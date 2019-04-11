@@ -19,6 +19,61 @@ public:
 	}
 };
 
+class CheckNearNode : public Node
+{
+public:
+
+	Boid* m_boid;
+	Boid* m_monster;
+	DynamicArrive* arrive;
+	SteeringOutput* steer;
+	Status update() override
+	{
+		auto Position = m_monster->mRigidbody.Position;
+		auto targetPos = m_boid->mRigidbody.Position;
+		auto dist = Position.distanceSquared(targetPos);
+		if (dist < 20) return Node::Status::Success;
+		return Node::Status::Failure;
+	}
+};
+
+
+class RespawnNode : public Node
+{
+public:
+
+	Boid* m_boid;
+	Boid* m_monster;
+	DynamicArrive* arrive;
+	SteeringOutput* steer;
+	Status update() override
+	{
+
+		m_boid->mRigidbody.Position.x = ofRandomWidth();
+		m_boid->mRigidbody.Position.y = ofRandomHeight();
+		m_monster->mRigidbody.Position = ofVec2f(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
+		
+		return Node::Status::Success;
+	}
+};
+
+class CheckExsitNode : public Node
+{
+public:
+
+	Boid* m_boid;
+	Boid* m_monster;
+	DynamicArrive* arrive;
+	SteeringOutput* steer;
+	Status update() override
+	{
+		return Node::Status::Failure;
+	}
+};
+
+
+
+
 class BTDemo
 {
 public:
@@ -48,6 +103,8 @@ public:
 
 
 	BehaviorTree tree;
+	shared_ptr<ChaseNode> chase_node;
+	shared_ptr<ParallelSequence> parallel_sequence_node;
 };
 
 

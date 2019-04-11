@@ -13,7 +13,10 @@ BTDemo::~BTDemo()
 
 void BTDemo::Draw()
 {
-	
+	m_boid.Draw();
+	m_monster.Draw();
+	// ofSetColor(0, 255, 0);
+	// ofDrawBitmapString(m_boid.mRigidbody.Velocity, 100, 100);
 }
 
 void BTDemo::Init()
@@ -38,13 +41,14 @@ void BTDemo::Init()
 
 
 	// Nodes Initialization 
-	auto chaseNode = std::make_shared<ChaseNode>();
-	chaseNode->m_monster = &m_monster;
-	chaseNode->targetRigid = &m_boid.mRigidbody;
-	chaseNode->arrive = &arrive;
+	 
+	chase_node = std::make_shared<ChaseNode>();
+	chase_node->m_monster = &m_monster;
+	chase_node->targetRigid = &m_boid.mRigidbody;
+	chase_node->arrive = &arrive;
 
 	auto seq = std::make_shared<Sequence>();
-	seq->addChild(chaseNode);
+	seq->addChild(chase_node);
 	tree.setRoot(seq);
 
 	
@@ -54,5 +58,13 @@ void BTDemo::Init()
 
 void BTDemo::Update()
 {
+	auto deltaTime = ofGetLastFrameTime();
+	SteeringOutput steer;
+	chase_node->steer = &steer;
+
 	tree.update();
+
+	m_monster.Update(steer, deltaTime);
+
+	m_monster.mRigidbody.LookToMovment();
 }
