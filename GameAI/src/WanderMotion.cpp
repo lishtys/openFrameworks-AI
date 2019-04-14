@@ -61,7 +61,7 @@ void WanderMotion::Update()
 	
 	// m_boid.mRigidbody.LookToMovment();
 
-
+	
 }
 
 void WanderMotion::Draw()

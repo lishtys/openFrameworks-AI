@@ -19,6 +19,21 @@ public:
 	}
 };
 
+class WanderNode : public Node
+{
+public:
+
+	Rigidbody* targetRigid;
+	Boid* m_monster;
+	DynamicWander* wander;
+	SteeringOutput* steer;
+	Status update() override
+	{
+		wander->getSteering(steer);
+		return Node::Status::Success;
+	}
+};
+
 class CheckNearNode : public Node
 {
 public:
@@ -38,7 +53,7 @@ public:
 };
 
 
-class CheckSpin
+
 
 
 class RespawnNode : public Node
@@ -98,16 +113,20 @@ public:
 
 	Boid m_boid;
 	Boid m_monster;
-
+	Rigidbody targetRigid;
 
 	DynamicArrive arrive;
-
+	DynamicWander wander;
 
 
 
 	BehaviorTree mon_tree;
 	BehaviorTree boid_tree;
 	shared_ptr<ChaseNode> chase_node;
+	shared_ptr<RespawnNode> respawn_node;
+	shared_ptr<CheckNearNode> check_near_node;
+	shared_ptr<WanderNode> wander_node;
+
 };
 
 
