@@ -35,7 +35,7 @@ bool ofApp::needBoid;
 bool ofApp::showImg;
 bool ofApp::showUnwalkableNode;
 
-bool b_dtDemo = true;
+bool b_dtDemo = false;
 
 void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e)
 {

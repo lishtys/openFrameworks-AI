@@ -11,11 +11,21 @@ public:
 
 	Rigidbody* targetRigid;
 	Boid* m_monster;
-	DynamicArrive* arrive;
+
+
+	AStarPathfinding* a_star_pathfinding;
+
+
+//	DynamicArrive* arrive;
 	SteeringOutput* steer;
 	Status update() override
 	{
-		arrive->getSteering(steer);
+		a_star_pathfinding->path_follow.pRadius = 20;
+		a_star_pathfinding->path_follow.path = a_star_pathfinding->pathList;
+	
+
+		a_star_pathfinding->path_follow.getSteering(steer);
+		// arrive->getSteering(steer);
 		return Node::Status::Success;
 	}
 };

@@ -15,11 +15,11 @@ void BTDemo::Draw()
 {
 	
 	// a_pathfinding.m_map.DarwNodes();
-	 // a_pathfinding.Draw();
 	 ofSetColor(255, 255, 255);
 	 cur_img->draw(0, 0, 1920, 1080);
 	m_boid.Draw();
 	m_monster.Draw();
+	a_pathfinding.Draw();
 
 
 
@@ -37,12 +37,16 @@ void BTDemo::Init()
 	cur_img = &img_node;
 
 	a_pathfinding.m_map.Setup(*cur_img);
+	a_pathfinding.mon_boid = &m_monster;
 
-	m_boid.mRigidbody.Position.x = ofRandomWidth();
-	m_boid.mRigidbody.Position.y = ofRandomHeight();
+
+	// m_boid.mRigidbody.Position.x = ofRandomWidth();
+	// m_boid.mRigidbody.Position.y = ofRandomHeight();
 	
 	
-	m_monster.mRigidbody.Position = ofVec2f(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
+	m_monster.mRigidbody.Position = ofVec2f(400.0, 550.0);
+	m_boid.mRigidbody.Position = ofVec2f(300.0, 550.0);
+
 	m_monster.mColor= { 255,0,0 };
 
 
@@ -74,7 +78,7 @@ void BTDemo::Init()
 
 	chase_node->m_monster = &m_monster;
 	chase_node->targetRigid = &m_boid.mRigidbody;
-	chase_node->arrive = &arrive;
+	chase_node->a_star_pathfinding = &a_pathfinding;
 
 
 	wander_node->m_monster = &m_monster;
@@ -111,6 +115,8 @@ void BTDemo::Init()
 	seq->addChild(invert);
 	// seq->addChild(wander_node);
 
+
+	a_pathfinding.GetPathForTarget(m_boid.mRigidbody.Position.x, m_boid.mRigidbody.Position.y);
 	
 }
 
@@ -121,14 +127,14 @@ void BTDemo::Update()
 	SteeringOutput steer;
 	SteeringOutput mon_steer;
 
-	// a_pathfinding.GetPath(0, 0, 0, 0);
+	
 	
 	
 	wander_node->steer = &steer;
 	chase_node->steer = &mon_steer;
 
 	boid_tree.update();
-	 mon_tree.update();
+	mon_tree.update();
 	
 	m_boid.Update(steer,deltaTime);
 

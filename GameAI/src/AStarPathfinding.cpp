@@ -10,16 +10,37 @@ AStarPathfinding::AStarPathfinding()
 	path_follow.maxAcceleration = 50;
 	path_follow.maxAngularAcc = 10;
 	path_follow.maxSpeed = 100;
-
 	path_follow.curIdx = 0;
-	
-
-
+	mon_boid = NULL;
 }
 
 
 AStarPathfinding::~AStarPathfinding()
 {
+}
+
+void AStarPathfinding::GetPathForTarget(int tarX,int tarY)
+{
+	float scaleX = ofGetWidth() / m_map.width;
+	float scaleY = ofGetHeight() / m_map.height;
+	float mX = tarX;
+	float mY =tarY;
+	int indexX = mX / scaleX;
+	int indexY = mY / scaleY;
+
+
+	float X = mon_boid->mRigidbody.Position.x;
+	float Y = mon_boid->mRigidbody.Position.y;
+
+	int b_indexX = X / scaleX;
+	int b_indexY = Y / scaleY;
+
+
+	{
+		targetNode = m_map.GetNode(indexX, indexY);
+		srcNode = m_map.GetNode(b_indexX, b_indexY);
+	}
+	GetPath(30, 30, ofGetMouseX() / 40, ofGetMouseY() / 40);
 }
 
 void AStarPathfinding::GetPath(int srcX, int srcY, int tarX, int tarY)
@@ -171,11 +192,11 @@ void AStarPathfinding::Draw()
 	for (auto mapNode : m_map.NodeList)
 	{
 
-		if (mapNode->isVisited)
-		{
-			ofSetColor(ofColor::cadetBlue);
-			ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
-		}
+		// if (mapNode->isVisited)
+		// {
+		// 	ofSetColor(ofColor::cadetBlue);
+		// 	ofDrawRectangle(mapNode->pos.x*scaleX, mapNode->pos.y *scaleY, scaleX, scaleY);
+		// }
 
 
 		if(ofApp::showUnwalkableNode)

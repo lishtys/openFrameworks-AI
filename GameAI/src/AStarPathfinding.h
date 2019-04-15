@@ -17,6 +17,9 @@ public:
 	bool found = true;
 
 
+	void GetPathForTarget(int tarX,int tarY);
+
+
 	void GetPath(int srcX,int srcY,int tarX,int tarY);
 
 	void RunBoid();
@@ -42,6 +45,8 @@ public:
 	Boid m_boid;
 	Follow path_follow;
 
+
+	Boid *mon_boid;
 
 	//Ctrl Flag
 
