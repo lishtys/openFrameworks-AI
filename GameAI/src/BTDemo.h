@@ -2,6 +2,7 @@
 #include "BTCore.h"
 #include "Boid.h"
 #include "Steering.h"
+#include "AStarPathfinding.h"
 
 
 class ChaseNode : public Node
@@ -62,8 +63,6 @@ public:
 
 	Boid* m_boid;
 	Boid* m_monster;
-	DynamicArrive* arrive;
-	SteeringOutput* steer;
 	Status update() override
 	{
 
@@ -119,6 +118,10 @@ public:
 	DynamicWander wander;
 
 
+
+	AStarPathfinding a_pathfinding;
+	ofImage img_node;
+	ofImage* cur_img;
 
 	BehaviorTree mon_tree;
 	BehaviorTree boid_tree;
