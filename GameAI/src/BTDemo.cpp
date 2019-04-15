@@ -15,8 +15,9 @@ void BTDemo::Draw()
 {
 	
 	// a_pathfinding.m_map.DarwNodes();
-	// a_pathfinding.Draw();
-	// cur_img->draw(0, 0, 1920, 1080);
+	 // a_pathfinding.Draw();
+	 ofSetColor(255, 255, 255);
+	 cur_img->draw(0, 0, 1920, 1080);
 	m_boid.Draw();
 	m_monster.Draw();
 
@@ -32,7 +33,7 @@ void BTDemo::Init()
 	a_pathfinding.pathList.clear();
 	a_pathfinding.srcNode = nullptr;
 	a_pathfinding.targetNode = nullptr;
-	img_node.loadImage("SimpleNode.png");
+	img_node.loadImage("maze.png");
 	cur_img = &img_node;
 
 	a_pathfinding.m_map.Setup(*cur_img);
@@ -119,6 +120,7 @@ void BTDemo::Update()
 	auto deltaTime = ofGetLastFrameTime();
 	SteeringOutput steer;
 	SteeringOutput mon_steer;
+
 	// a_pathfinding.GetPath(0, 0, 0, 0);
 	
 	
