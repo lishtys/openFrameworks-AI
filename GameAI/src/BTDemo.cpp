@@ -45,7 +45,7 @@ void BTDemo::Init()
 	
 	
 	m_monster.mRigidbody.Position = ofVec2f(400.0, 550.0);
-	m_boid.mRigidbody.Position = ofVec2f(300.0, 550.0);
+	m_boid.mRigidbody.Position = ofVec2f(1200, 550.0);
 
 	m_monster.mColor= { 255,0,0 };
 
@@ -92,6 +92,7 @@ void BTDemo::Init()
 
 	respawn_node->m_monster = &m_monster;
 	respawn_node->m_boid = &m_boid;
+	respawn_node->a_pathfinding = &a_pathfinding;
 
 	auto select= std::make_shared<Selector>();
 	auto seq1 = std::make_shared<Sequence>();

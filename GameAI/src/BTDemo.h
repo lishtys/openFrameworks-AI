@@ -20,6 +20,7 @@ public:
 	SteeringOutput* steer;
 	Status update() override
 	{
+		a_star_pathfinding->path_follow.character = &m_monster->mRigidbody;
 		a_star_pathfinding->path_follow.pRadius = 20;
 		a_star_pathfinding->path_follow.path = a_star_pathfinding->pathList;
 	
@@ -73,13 +74,14 @@ public:
 
 	Boid* m_boid;
 	Boid* m_monster;
+	AStarPathfinding* a_pathfinding;
 	Status update() override
 	{
 
 		m_boid->mRigidbody.Position.x = ofRandomWidth();
 		m_boid->mRigidbody.Position.y = ofRandomHeight();
 		m_monster->mRigidbody.Position = ofVec2f(ofGetWindowWidth() / 2, ofGetWindowHeight() / 2);
-		
+		a_pathfinding->GetPathForTarget(m_boid->mRigidbody.Position.x, m_boid->mRigidbody.Position.y);
 		return Node::Status::Success;
 	}
 };
