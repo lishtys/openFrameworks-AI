@@ -3,6 +3,7 @@
 #include "Boid.h"
 #include "Steering.h"
 #include "AStarPathfinding.h"
+#include "DecisionTree.h"
 
 
 class ChaseNode : public Node
@@ -100,8 +101,38 @@ public:
 	}
 };
 
+//------------------------------------------------------------------
 
 
+
+class BoidTDecisionNode :public Decision
+{
+public:
+	Rigidbody* targetRigid;
+	Boid* m_boid;
+	virtual bool GetBranch();
+};
+
+class BoidTActionNode : public DecisionTreeAction
+{
+public:
+	Rigidbody* targetRigid;
+	Boid* m_boid;
+	virtual void DoAction();
+};
+
+
+
+class BoidChasActionNode :public DecisionTreeAction
+{
+public:
+	Boid* mon_boid;
+	AStarPathfinding* pathfinding;
+	SteeringOutput* steer;
+	virtual void DoAction();
+};
+
+//------------------------------------------------------------------
 
 class BTDemo
 {
@@ -141,6 +172,16 @@ public:
 	shared_ptr<RespawnNode> respawn_node;
 	shared_ptr<CheckNearNode> check_near_node;
 	shared_ptr<WanderNode> wander_node;
+
+
+
+	// DT Learning 
+	BoidTDecisionNode target_dec_node;
+
+	BoidChasActionNode chase_action_node;
+	BoidTActionNode target_action_node;
+	Boid learn_monster;
+	AStarPathfinding learn_pathfinding;
 
 };
 
