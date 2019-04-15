@@ -8,6 +8,7 @@
 #include "DFSPathfinding.h"
 #include "DTDemo.h"
 #include "BTDemo.h"
+#include "ID3Demo.h"
 
 BasicMotion bMotion;
 SeekMotion sMotion;
@@ -20,6 +21,7 @@ DFSPathfinding d_pathfinding;
 
 DTDemo DTDemo;
 BTDemo BTDemo;
+ID3Demo IDDemo;
 
 
 
