@@ -35,7 +35,7 @@ bool ofApp::needBoid;
 bool ofApp::showImg;
 bool ofApp::showUnwalkableNode;
 
-
+bool b_dtDemo = true;
 
 void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e)
 {
@@ -79,10 +79,17 @@ void ofApp::onButtonGetPathEvent(ofxDatGuiButtonEvent e)
 //--------------------------------------------------------------
 void ofApp::setup() {
 
-	DTDemo.Init();
-	BTDemo.Init();
-	// ID3Demo.Init();
+	if(b_dtDemo)
+	{
+		DTDemo.Init();
 
+	}else
+	{
+		BTDemo.Init();
+		ID3Demo.Init();
+
+	}
+	
 
 }
 
@@ -90,20 +97,56 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update() {
 
-	DTDemo.Update();
-	// BTDemo.Update();
-	// ID3Demo.Update();
+
+	if (b_dtDemo)
+	{
+		DTDemo.Update();
+
+	}
+	else
+	{
+		
+		BTDemo.Update();
+		ID3Demo.Update();
+	}
+
+	
+	
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 
-	DTDemo.Draw();
-	//BTDemo.Draw();
+	
+
+
+
+	if (b_dtDemo)
+	{
+		DTDemo.Draw();
+
+	}
+	else
+	{
+
+		BTDemo.Draw();
+	}
 }
 
 void ofApp::keyPressed(int key)
 {
+	if (key == 'q')
+	{
+		b_dtDemo = true;
+		setup();
+	}
+	if (key == 'w')
+	{
+		b_dtDemo = false;
+		setup();
+	}
+
+	
 }
 
 //--------------------------------------------------------------
