@@ -85,10 +85,7 @@
     <ClCompile Include="..\..\..\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.cpp">
       <Filter>addons\ofxDatGui\src</Filter>
     </ClCompile>
-    <ClCompile Include="ID3.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="ID3Demo.cpp">
+    <ClCompile Include="src\ID3Demo.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -254,10 +251,7 @@
     <ClInclude Include="..\..\..\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h">
       <Filter>addons\ofxDatGui\src\themes</Filter>
     </ClInclude>
-    <ClInclude Include="ID3.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="ID3Demo.h">
+    <ClInclude Include="src\ID3Demo.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

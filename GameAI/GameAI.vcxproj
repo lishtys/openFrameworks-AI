@@ -180,8 +180,7 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ID3.cpp" />
-    <ClCompile Include="ID3Demo.cpp" />
+    <ClCompile Include="src\ID3Demo.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\Action.cpp" />
@@ -210,8 +209,7 @@
     <ClCompile Include="..\..\..\of_v0.10.1_vs2017_release\addons\ofxDatGui\src\ofxDatGui.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ID3.h" />
-    <ClInclude Include="ID3Demo.h" />
+    <ClInclude Include="src\ID3Demo.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\Action.h" />
     <ClInclude Include="src\AStarPathfinding.h" />

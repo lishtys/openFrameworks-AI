@@ -21,7 +21,7 @@ DFSPathfinding d_pathfinding;
 
 DTDemo DTDemo;
 BTDemo BTDemo;
-ID3Demo IDDemo;
+ID3Demo ID3Demo;
 
 
 
@@ -79,9 +79,9 @@ void ofApp::onButtonGetPathEvent(ofxDatGuiButtonEvent e)
 //--------------------------------------------------------------
 void ofApp::setup() {
 
-	//DTDemo.Init();
+	DTDemo.Init();
 	BTDemo.Init();
-
+	// ID3Demo.Init();
 
 
 }
@@ -90,15 +90,16 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update() {
 
-//	DTDemo.Update();
-	BTDemo.Update();
+	DTDemo.Update();
+	// BTDemo.Update();
+	// ID3Demo.Update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 
-	//DTDemo.Draw();
-	BTDemo.Draw();
+	DTDemo.Draw();
+	//BTDemo.Draw();
 }
 
 void ofApp::keyPressed(int key)
